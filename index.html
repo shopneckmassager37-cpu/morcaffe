@@ -55,10 +55,19 @@
 
     body {
       background-color: #FBF9F6;
+      background-image:
+        radial-gradient(115% 80% at 88% -12%, #FFFFFF 0%, rgba(251,249,246,0) 52%),
+        radial-gradient(95% 65% at -5% 105%, #F3EDE4 0%, rgba(251,249,246,0) 55%);
+      background-attachment: fixed;
       color: #2C2520;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
+
+    /* Editorial heading refinement */
+    h1, h2, h3 { letter-spacing: -0.015em; }
+    h1 { text-wrap: balance; }
+    p { text-wrap: pretty; }
 
     /* Subtle paper grain for an artisanal, handcrafted feel */
     body::before {
@@ -89,6 +98,49 @@
     .nav-link:hover::after,
     .nav-link[aria-current="page"]::after { transform: translateX(-50%) scaleX(1); }
     .nav-link[aria-current="page"] { color: #5D6B59; }
+
+    /* Editorial eyebrow label with a leading hairline */
+    .eyebrow { display: inline-flex; align-items: center; gap: 0.65rem; }
+    .eyebrow::before {
+      content: "";
+      width: 1.9rem;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.55;
+    }
+
+    /* Primary CTA micro-interaction (lift + warm shadow) */
+    a.bg-sage, button.bg-sage {
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  box-shadow 0.4s ease, background-color 0.3s ease;
+    }
+    a.bg-sage:hover, button.bg-sage:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px -14px rgba(93, 107, 89, 0.6);
+    }
+
+    /* Card hover lift */
+    .card-hover {
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 26px 48px -28px rgba(44, 37, 32, 0.3);
+    }
+
+    /* Refined image frames: warm layered shadow + hairline ring */
+    .img-frame {
+      box-shadow: 0 30px 60px -32px rgba(44, 37, 32, 0.32);
+      outline: 1px solid rgba(44, 37, 32, 0.05);
+      outline-offset: -1px;
+    }
+
+    /* Accessible focus ring */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #5D6B59;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
 
     /* Tab view transition */
     .tab-view { display: none; }
@@ -311,7 +363,7 @@
         <span class="accent-blob w-64 h-64 top-40 -left-20" style="background:#8A7A6E; opacity:0.35"></span>
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div class="lg:col-span-5 reveal" style="--delay:0ms">
-            <p class="text-sage text-sm font-medium tracking-[0.2em] mb-5">קיבוץ עלומים · עוטף עזה</p>
+            <p class="eyebrow text-sage text-sm font-medium tracking-[0.2em] mb-5">קיבוץ עלומים · עוטף עזה</p>
             <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.15] font-bold text-espresso">
               מורקפה – קפה משובח ומאפים עם לב בלב קיבוץ עלומים
             </h1>
@@ -345,10 +397,14 @@
           </div>
 
           <div class="lg:col-span-7 reveal" style="--delay:120ms">
-            <figure class="img-frame rounded-[2rem] shadow-2xl shadow-espresso/10">
+            <figure class="img-frame relative rounded-[2rem]">
               <img src="https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png"
                    alt="עגלת הקפה של מורקפה בחצר הראשונים, מוקפת בירק ובפינות ישיבה מוצלות"
                    class="w-full h-[340px] sm:h-[460px] lg:h-[560px] object-cover" loading="eager" decoding="async" width="1200" height="800" />
+              <div class="absolute bottom-5 left-5 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-canvas/95 backdrop-blur-sm border border-sage/25 shadow-xl flex flex-col items-center justify-center text-center -rotate-6" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+                <span class="text-sage font-serif text-sm font-bold leading-tight">כשר<br>עם תעודה</span>
+              </div>
             </figure>
           </div>
         </div>
@@ -357,7 +413,7 @@
       <!-- Floating info grid -->
       <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-16">
         <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-          <div class="reveal bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:60ms">
+          <div class="reveal card-hover bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:60ms">
             <h2 class="font-serif text-xl font-bold text-espresso mb-4">מתי אנחנו פתוחים</h2>
             <ul class="space-y-2 text-warmgray leading-relaxed">
               <li>ימי חמישי: 08:30 – 13:30</li>
@@ -365,7 +421,7 @@
               <li>שאר הימים: סגור (כולל שבת)</li>
             </ul>
           </div>
-          <div class="reveal bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:140ms">
+          <div class="reveal card-hover bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:140ms">
             <h2 class="font-serif text-xl font-bold text-espresso mb-4">איך מגיעים</h2>
             <ul class="space-y-2 text-warmgray leading-relaxed">
               <li>חצר הראשונים, קיבוץ עלומים.</li>
@@ -373,7 +429,7 @@
               <li>חנייה חופשית בשפע במתחם.</li>
             </ul>
           </div>
-          <div class="reveal bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:220ms">
+          <div class="reveal card-hover bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:220ms">
             <h2 class="font-serif text-xl font-bold text-espresso mb-4">איכות וכשרות</h2>
             <ul class="space-y-2 text-warmgray leading-relaxed">
               <li>כל המנות מיוצרות במקום בעבודת יד.</li>
@@ -393,7 +449,7 @@
             </svg>
           </span>
           <div class="flex-1">
-            <p class="text-sage text-sm font-medium tracking-[0.2em] mb-2">עוקבים אחרינו</p>
+            <p class="eyebrow text-sage text-sm font-medium tracking-[0.2em] mb-2">עוקבים אחרינו</p>
             <p class="text-lg sm:text-xl leading-relaxed text-espresso/90 max-w-2xl">
               מגיעים מרחוק? מומלץ להתעדכן בדף האינסטגרם שלנו ‎@cakes_and_mor‎ לפני ההגעה כדי לוודא שעות פעילות ועדכונים מהעגלה!
             </p>
@@ -410,7 +466,7 @@
     <section id="tab-story" class="tab-view" role="tabpanel" aria-label="הסיפור שלנו">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
         <header class="max-w-3xl reveal">
-          <p class="text-sage text-sm font-medium tracking-[0.2em] mb-4">הסיפור שלנו</p>
+          <p class="eyebrow text-sage text-sm font-medium tracking-[0.2em] mb-4">הסיפור שלנו</p>
           <h1 class="font-serif text-4xl sm:text-5xl font-bold text-espresso leading-tight">הלב שמאחורי המאפה והקפה</h1>
         </header>
 
@@ -497,7 +553,7 @@
     <section id="tab-menu" class="tab-view" role="tabpanel" aria-label="התפריט">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
         <header class="max-w-3xl reveal mb-8">
-          <p class="text-sage text-sm font-medium tracking-[0.2em] mb-4">התפריט</p>
+          <p class="eyebrow text-sage text-sm font-medium tracking-[0.2em] mb-4">התפריט</p>
           <h1 class="font-serif text-4xl sm:text-5xl font-bold text-espresso leading-tight">תפריט מוקפד ואיכותי – 100% תוצרת בית</h1>
           <p class="mt-5 text-lg leading-relaxed text-warmgray">כל מנה נאפית ומוכנה במקום בעבודת יד, מחומרי הגלם הטובים ביותר. התפריט מתחדש לפי העונה וזמינות הוויטרינה משתנה לאורך היום.</p>
         </header>
@@ -629,15 +685,15 @@
 
         <!-- Assurance strip -->
         <div class="reveal mt-8 grid sm:grid-cols-3 gap-4">
-          <div class="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-espresso/5 text-center">
+          <div class="card-hover bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-espresso/5 text-center">
             <p class="font-serif text-lg font-bold text-espresso mb-1">תוצרת בית מלאה</p>
             <p class="text-sm text-warmgray leading-relaxed">הכול נאפה ומוכן במקום, מאפס, בעבודת יד.</p>
           </div>
-          <div class="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-espresso/5 text-center">
+          <div class="card-hover bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-espresso/5 text-center">
             <p class="font-serif text-lg font-bold text-espresso mb-1">כשר עם תעודה</p>
             <p class="text-sm text-warmgray leading-relaxed">תעודת הכשרות מוצגת במקום לרווחתכם.</p>
           </div>
-          <div class="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-espresso/5 text-center">
+          <div class="card-hover bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-espresso/5 text-center">
             <p class="font-serif text-lg font-bold text-espresso mb-1">מתחדש לפי העונה</p>
             <p class="text-sm text-warmgray leading-relaxed">קינוחים ולחמים מתחלפים — שווה לבדוק מה טרי היום.</p>
           </div>
@@ -651,7 +707,7 @@
     <section id="tab-guide" class="tab-view" role="tabpanel" aria-label="המדריך למבקר">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
         <header class="max-w-3xl reveal mb-8">
-          <p class="text-sage text-sm font-medium tracking-[0.2em] mb-4">המדריך למבקר</p>
+          <p class="eyebrow text-sage text-sm font-medium tracking-[0.2em] mb-4">המדריך למבקר</p>
           <h1 class="font-serif text-4xl sm:text-5xl font-bold text-espresso leading-tight">חוויית הביקור במרחב הפתוח</h1>
         </header>
 
@@ -661,19 +717,19 @@
 
         <!-- Quick facts -->
         <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14" style="--delay:140ms">
-          <div class="bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-espresso/5">
+          <div class="card-hover bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-espresso/5">
             <p class="font-serif text-base font-bold text-espresso">חנייה חופשית</p>
             <p class="text-sm text-warmgray mt-1">רחבה ונוחה צמוד לעגלה</p>
           </div>
-          <div class="bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-espresso/5">
+          <div class="card-hover bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-espresso/5">
             <p class="font-serif text-base font-bold text-espresso">מרחב מוצל</p>
             <p class="text-sm text-warmgray mt-1">דשא ועצים עתיקים</p>
           </div>
-          <div class="bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-espresso/5">
+          <div class="card-hover bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-espresso/5">
             <p class="font-serif text-base font-bold text-espresso">מבנה ממוזג</p>
             <p class="text-sm text-warmgray mt-1">נעים בכל מזג אוויר</p>
           </div>
-          <div class="bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-espresso/5">
+          <div class="card-hover bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-espresso/5">
             <p class="font-serif text-base font-bold text-espresso">ידידותי למשפחות</p>
             <p class="text-sm text-warmgray mt-1">מרחב פתוח לזוגות ולילדים</p>
           </div>
@@ -735,7 +791,7 @@
     <section id="tab-contact" class="tab-view" role="tabpanel" aria-label="צור קשר והגעה">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
         <header class="max-w-3xl reveal mb-14">
-          <p class="text-sage text-sm font-medium tracking-[0.2em] mb-4">צור קשר והגעה</p>
+          <p class="eyebrow text-sage text-sm font-medium tracking-[0.2em] mb-4">צור קשר והגעה</p>
           <h1 class="font-serif text-4xl sm:text-5xl font-bold text-espresso leading-tight">נשמח לראותכם בין אורחינו</h1>
         </header>
 
