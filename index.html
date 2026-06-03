@@ -137,6 +137,43 @@
       animation: ticker 28s linear infinite;
     }
 
+    /* Brand logo mark */
+    .brand-mark {
+      background: linear-gradient(140deg, #6B7A66 0%, #5D6B59 55%, #8A7A6E 140%);
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+    }
+    .brand:hover .brand-mark {
+      transform: rotate(-7deg) scale(1.06);
+      box-shadow: 0 10px 24px -10px rgba(93,107,89,0.7);
+    }
+    .brand-mark .steam {
+      animation: steam 3.4s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes steam {
+      0%, 100% { opacity: 0.45; transform: translateY(0.5px); }
+      50% { opacity: 1; transform: translateY(-1px); }
+    }
+
+    /* Scroll-triggered reveal (chapters enter one by one) */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                  transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .scroll-reveal.in-view { opacity: 1; transform: none; }
+
+    /* Soft decorative accent blobs */
+    .accent-blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(60px);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: -1;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after {
@@ -145,6 +182,7 @@
         transition-duration: 0.001ms !important;
       }
       .img-frame:hover img { transform: none; }
+      .scroll-reveal { opacity: 1; transform: none; }
     }
 
     ::selection { background: #5D6B59; color: #FBF9F6; }
@@ -197,10 +235,20 @@
   <!-- ============ HEADER ============ -->
   <header class="sticky top-0 z-40 bg-canvas/80 backdrop-blur-md border-b border-espresso/5">
     <nav class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-20 flex items-center justify-between" aria-label="ניווט ראשי">
-      <!-- Brand -->
-      <a href="#" data-tab="home" class="flex items-baseline gap-2 group" aria-label="מורקפה — לעמוד הבית">
-        <span class="font-serif text-2xl sm:text-3xl font-bold text-espresso tracking-tight">מורקפה</span>
-        <span class="hidden sm:inline text-xs text-taupe font-light tracking-[0.25em]">ALUMIM</span>
+      <!-- Brand / Logo -->
+      <a href="#" data-tab="home" class="brand flex items-center gap-2.5" aria-label="מורקפה — לעמוד הבית">
+        <span class="brand-mark relative inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full text-canvas shrink-0 shadow-md shadow-sage/20">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="steam" d="M9 3.5c.7.8.7 1.7 0 2.5M12 3c.7.8.7 1.7 0 2.5M15 3.5c.7.8.7 1.7 0 2.5"/>
+            <path d="M4 9h13v4.5A4.5 4.5 0 0 1 12.5 18h-4A4.5 4.5 0 0 1 4 13.5V9z"/>
+            <path d="M17 10h1.6a2.4 2.4 0 0 1 0 4.8H17"/>
+            <path d="M5 21h13" opacity="0.7"/>
+          </svg>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-serif text-2xl sm:text-3xl font-bold text-espresso tracking-tight">מורקפה</span>
+          <span class="text-[10px] text-taupe font-light tracking-[0.3em] mt-0.5">ALUMIM · קפה בוטיק</span>
+        </span>
       </a>
 
       <!-- Desktop nav -->
@@ -230,7 +278,16 @@
   <!-- ============ MOBILE MENU OVERLAY ============ -->
   <div id="mobileMenu" class="hidden-menu fixed inset-0 z-50 bg-canvas/90 backdrop-blur-lg lg:hidden flex flex-col" role="dialog" aria-modal="true" aria-label="תפריט ניווט">
     <div class="h-20 px-5 flex items-center justify-between border-b border-espresso/5">
-      <span class="font-serif text-2xl font-bold text-espresso">מורקפה</span>
+      <span class="brand flex items-center gap-2.5">
+        <span class="brand-mark relative inline-flex items-center justify-center w-10 h-10 rounded-full text-canvas shrink-0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="steam" d="M9 3.5c.7.8.7 1.7 0 2.5M12 3c.7.8.7 1.7 0 2.5M15 3.5c.7.8.7 1.7 0 2.5"/>
+            <path d="M4 9h13v4.5A4.5 4.5 0 0 1 12.5 18h-4A4.5 4.5 0 0 1 4 13.5V9z"/>
+            <path d="M17 10h1.6a2.4 2.4 0 0 1 0 4.8H17"/>
+          </svg>
+        </span>
+        <span class="font-serif text-2xl font-bold text-espresso">מורקפה</span>
+      </span>
       <button type="button" id="menuClose" class="-mr-2 p-2 text-espresso" aria-label="סגירת התפריט">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
           <line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>
@@ -258,7 +315,9 @@
     <!-- ===== TAB 1: HOME ===== -->
     <section id="tab-home" class="tab-view is-active" role="tabpanel" aria-label="בית">
       <!-- Hero -->
-      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-12 lg:pt-20 pb-16">
+      <div class="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-12 lg:pt-20 pb-16 overflow-hidden">
+        <span class="accent-blob w-72 h-72 -top-10 -right-16" style="background:#5D6B59"></span>
+        <span class="accent-blob w-64 h-64 top-40 -left-20" style="background:#8A7A6E; opacity:0.35"></span>
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div class="lg:col-span-5 reveal" style="--delay:0ms">
             <p class="text-sage text-sm font-medium tracking-[0.2em] mb-5">קיבוץ עלומים · עוטף עזה</p>
@@ -362,7 +421,7 @@
         <div class="relative border-r-2 border-sage/15 pr-7 sm:pr-12 space-y-16 lg:space-y-24">
 
           <!-- Chapter 1 + image -->
-          <div class="reveal relative">
+          <div class="scroll-reveal relative">
             <span class="absolute -right-[2.35rem] sm:-right-[3.85rem] top-1 w-9 h-9 rounded-full bg-sage text-canvas text-sm font-bold flex items-center justify-center ring-4 ring-canvas" aria-hidden="true">1</span>
             <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div class="order-2 lg:order-1">
@@ -381,7 +440,7 @@
           </div>
 
           <!-- Chapter 2 -->
-          <div class="reveal relative max-w-3xl">
+          <div class="scroll-reveal relative max-w-3xl">
             <span class="absolute -right-[2.35rem] sm:-right-[3.85rem] top-1 w-9 h-9 rounded-full bg-sage text-canvas text-sm font-bold flex items-center justify-center ring-4 ring-canvas" aria-hidden="true">2</span>
             <span class="text-taupe font-serif text-sm tracking-widest">פרק שני</span>
             <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5">מתוך השבר – הרעיון שנולד במלון בשרון</h2>
@@ -391,7 +450,7 @@
           </div>
 
           <!-- Chapter 3 -->
-          <div class="reveal relative max-w-3xl">
+          <div class="scroll-reveal relative max-w-3xl">
             <span class="absolute -right-[2.35rem] sm:-right-[3.85rem] top-1 w-9 h-9 rounded-full bg-sage text-canvas text-sm font-bold flex items-center justify-center ring-4 ring-canvas" aria-hidden="true">3</span>
             <span class="text-taupe font-serif text-sm tracking-widest">פרק שלישי</span>
             <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5">השיבה לעלומים והקמת העגלה</h2>
@@ -402,7 +461,7 @@
         </div>
 
         <!-- Signature close -->
-        <div class="reveal mt-16 lg:mt-24 text-center">
+        <div class="scroll-reveal mt-16 lg:mt-24 text-center">
           <p class="text-warmgray">באהבה גדולה,</p>
           <p class="font-serif text-3xl sm:text-4xl text-sage mt-1">מור ואלון</p>
           <div class="w-16 h-px bg-sage/30 mx-auto mt-5"></div>
@@ -540,7 +599,7 @@
         </div>
 
         <!-- Special banner -->
-        <div class="reveal bg-sage text-canvas rounded-[2rem] p-8 sm:p-10 mt-6">
+        <div class="reveal text-canvas rounded-[2rem] p-8 sm:p-10 mt-6" style="background:linear-gradient(120deg,#5D6B59 0%,#6B7A66 60%,#8A7A6E 130%)">
           <p class="text-xs font-medium tracking-[0.2em] text-canvas/70 mb-3">מיוחד לסוף השבוע</p>
           <p class="text-lg leading-relaxed">
             <span class="font-bold">שימו לב:</span> בימי שישי אנחנו שמים דגש מיוחד על קונדיטוריה חגיגית – עוגות משפחתיות, מאפים מיוחדים ומארזי עוגיות טריות בעבודת יד כדי להמתיק לכם את סוף השבוע ולכבוד שבת!
@@ -637,7 +696,7 @@
         </div>
 
         <!-- Closing CTA -->
-        <div class="reveal mt-16 lg:mt-20 bg-sage text-canvas rounded-[2.5rem] p-9 sm:p-12 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div class="reveal mt-16 lg:mt-20 text-canvas rounded-[2.5rem] p-9 sm:p-12 flex flex-col sm:flex-row sm:items-center justify-between gap-6" style="background:linear-gradient(120deg,#5D6B59 0%,#6B7A66 55%,#8A7A6E 130%)">
           <div>
             <h2 class="font-serif text-2xl sm:text-3xl font-bold">מתכננים ביקור?</h2>
             <p class="text-canvas/80 mt-2 text-lg leading-relaxed max-w-xl">נווטו ישירות אל החנייה החופשית הצמודה לעגלה, או בדקו את שעות הפעילות ופרטי ההגעה המלאים.</p>
@@ -735,8 +794,17 @@
   <footer class="relative z-10 border-t border-espresso/5 bg-canvas">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
       <div class="text-center sm:text-right">
-        <p class="font-serif text-2xl font-bold text-espresso">מורקפה</p>
-        <p class="text-sm text-warmgray mt-1">חצר הראשונים, קיבוץ עלומים · עוטף עזה</p>
+        <span class="brand inline-flex items-center gap-2.5 justify-center sm:justify-start">
+          <span class="brand-mark relative inline-flex items-center justify-center w-10 h-10 rounded-full text-canvas shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path class="steam" d="M9 3.5c.7.8.7 1.7 0 2.5M12 3c.7.8.7 1.7 0 2.5M15 3.5c.7.8.7 1.7 0 2.5"/>
+              <path d="M4 9h13v4.5A4.5 4.5 0 0 1 12.5 18h-4A4.5 4.5 0 0 1 4 13.5V9z"/>
+              <path d="M17 10h1.6a2.4 2.4 0 0 1 0 4.8H17"/>
+            </svg>
+          </span>
+          <span class="font-serif text-2xl font-bold text-espresso">מורקפה</span>
+        </span>
+        <p class="text-sm text-warmgray mt-2">חצר הראשונים, קיבוץ עלומים · עוטף עזה</p>
         <p class="text-sm text-warmgray mt-3">© 2026 מורקפה</p>
       </div>
       <div class="inline-flex items-center gap-2 bg-sage/10 border border-sage/20 rounded-full px-5 py-2.5">
@@ -852,6 +920,29 @@
           showToast('פותחים ניווט ב-Waze אל מורקפה…');
         });
       });
+
+      // Scroll-triggered reveals (chapters enter one by one)
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var revealEls = document.querySelectorAll('.scroll-reveal');
+
+      if (prefersReduced || !('IntersectionObserver' in window)) {
+        revealEls.forEach(function (el) { el.classList.add('in-view'); });
+      } else {
+        var io = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+        revealEls.forEach(function (el, i) {
+          // gentle stagger so siblings in view cascade one after another
+          el.style.transitionDelay = ((i % 4) * 110) + 'ms';
+          io.observe(el);
+        });
+      }
 
       // Init from hash
       var initial = (location.hash || '').replace('#', '');
