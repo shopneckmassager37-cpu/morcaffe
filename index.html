@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FBF9F6" />
+
+  <title>מורקפה – קפה בוטיק ומאפים ביתיים בקיבוץ עלומים</title>
+  <meta name="description" content="מורקפה – עגלת קפה בוטיק ומאפים ביתיים בחצר הראשונים בקיבוץ עלומים. קפה משובח, אפייה טרייה יומיומית ומרחב פיקניק פסטורלי בלב עוטף עזה. כשר עם תעודה." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="מורקפה" />
+  <meta property="og:title" content="מורקפה – קפה משובח ומאפים עם לב בלב קיבוץ עלומים" />
+  <meta property="og:description" content="חוויה קולינרית ביתית ומלאת חמימות בחצר הראשונים ההיסטורית בקיבוץ עלומים. קפה בוטיק, מאפים טריים ומרחב פיקניק ירוק ופסטורלי." />
+  <meta property="og:image" content="https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png" />
+  <meta property="og:image:alt" content="עגלת הקפה של מורקפה בחצר הראשונים בקיבוץ עלומים" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="מורקפה – קפה משובח ומאפים עם לב בלב קיבוץ עלומים" />
+  <meta name="twitter:description" content="קפה בוטיק ומאפים ביתיים טריים בחצר הראשונים, קיבוץ עלומים. כשר עם תעודה." />
+  <meta name="twitter:image" content="https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#FBF9F6',
+            sage: '#5D6B59',
+            taupe: '#8A7A6E',
+            espresso: '#2C2520',
+            warmgray: '#6E645E',
+          },
+          fontFamily: {
+            sans: ['Heebo', 'system-ui', 'sans-serif'],
+            serif: ['"Frank Ruhl Libre"', 'Georgia', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root { color-scheme: light; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #FBF9F6;
+      color: #2C2520;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Subtle paper grain for an artisanal, handcrafted feel */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+      background-image: radial-gradient(rgba(44,37,32,0.03) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    /* Center-out expanding underline for nav links */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      width: 70%;
+      height: 1.5px;
+      background-color: #5D6B59;
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .nav-link:hover::after,
+    .nav-link[aria-current="page"]::after { transform: translateX(-50%) scaleX(1); }
+    .nav-link[aria-current="page"] { color: #5D6B59; }
+
+    /* Tab view transition */
+    .tab-view { display: none; }
+    .tab-view.is-active { display: block; }
+    .tab-view.is-active .reveal {
+      animation: revealUp 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+      animation-delay: var(--delay, 0ms);
+    }
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Editorial image hover zoom */
+    .img-frame { overflow: hidden; }
+    .img-frame img {
+      transition: transform 0.7s ease-out;
+      will-change: transform;
+    }
+    .img-frame:hover img { transform: scale(1.04); }
+
+    /* Mobile menu overlay */
+    #mobileMenu {
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    #mobileMenu.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+    #mobileMenu .m-link {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    #mobileMenu:not(.hidden-menu) .m-link {
+      animation: revealUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    /* Toast */
+    #toast {
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Marquee ticker */
+    @keyframes ticker {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .ticker-track {
+      animation: ticker 28s linear infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+      .img-frame:hover img { transform: none; }
+    }
+
+    ::selection { background: #5D6B59; color: #FBF9F6; }
+  </style>
+
+  <!-- Structured data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "מורקפה",
+    "description": "עגלת קפה בוטיק ומאפים ביתיים בחצר הראשונים, קיבוץ עלומים. קפה משובח ואפייה טרייה יומיומית במרחב פסטורלי בלב עוטף עזה.",
+    "image": "https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png",
+    "servesCuisine": ["קפה", "מאפים", "קונדיטוריה"],
+    "telephone": "+972-54-7792646",
+    "email": "cakes.mor@gmail.com",
+    "currenciesAccepted": "ILS",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "חצר הראשונים, קיבוץ עלומים",
+      "addressRegion": "חבל הבשור, עוטף עזה",
+      "addressCountry": "IL"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Thursday",
+        "opens": "08:30",
+        "closes": "13:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "08:30",
+        "closes": "13:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/cakes_and_mor",
+      "https://www.tiktok.com/@morcafe12"
+    ]
+  }
+  </script>
+</head>
+
+<body class="font-sans antialiased relative">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:right-4 focus:bg-sage focus:text-canvas focus:px-5 focus:py-3 focus:rounded-full">דלגו לתוכן הראשי</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="sticky top-0 z-40 bg-canvas/80 backdrop-blur-md border-b border-espresso/5">
+    <nav class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-20 flex items-center justify-between" aria-label="ניווט ראשי">
+      <!-- Brand -->
+      <a href="#" data-tab="home" class="flex items-baseline gap-2 group" aria-label="מורקפה — לעמוד הבית">
+        <span class="font-serif text-2xl sm:text-3xl font-bold text-espresso tracking-tight">מורקפה</span>
+        <span class="hidden sm:inline text-xs text-taupe font-light tracking-[0.25em]">ALUMIM</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden lg:flex items-center gap-10 text-[15px] font-medium text-warmgray">
+        <li><button type="button" class="nav-link tab-trigger" data-tab="home" aria-current="page">בית</button></li>
+        <li><button type="button" class="nav-link tab-trigger" data-tab="story">הסיפור שלנו</button></li>
+        <li><button type="button" class="nav-link tab-trigger" data-tab="menu">התפריט</button></li>
+        <li><button type="button" class="nav-link tab-trigger" data-tab="guide">המדריך למבקר</button></li>
+        <li><button type="button" class="nav-link tab-trigger" data-tab="contact">צור קשר והגעה</button></li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <a href="https://waze.com/ul?q=מורקפה%20עלומים&navigate=yes" target="_blank" rel="noopener"
+         class="hidden lg:inline-flex items-center gap-2 bg-sage text-canvas text-sm font-medium px-6 py-2.5 rounded-full hover:bg-sage/90 transition-colors duration-300">
+        נווט בוויז
+      </a>
+
+      <!-- Mobile menu button -->
+      <button type="button" id="menuToggle" class="lg:hidden -ml-2 p-2 text-espresso" aria-label="פתיחת תפריט הניווט" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ============ MOBILE MENU OVERLAY ============ -->
+  <div id="mobileMenu" class="hidden-menu fixed inset-0 z-50 bg-canvas/90 backdrop-blur-lg lg:hidden flex flex-col" role="dialog" aria-modal="true" aria-label="תפריט ניווט">
+    <div class="h-20 px-5 flex items-center justify-between border-b border-espresso/5">
+      <span class="font-serif text-2xl font-bold text-espresso">מורקפה</span>
+      <button type="button" id="menuClose" class="-mr-2 p-2 text-espresso" aria-label="סגירת התפריט">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="flex-1 flex flex-col justify-center px-8 gap-2" aria-label="ניווט במובייל">
+      <button type="button" class="m-link tab-trigger text-right font-serif text-3xl text-espresso py-4 border-b border-espresso/5" data-tab="home">בית</button>
+      <button type="button" class="m-link tab-trigger text-right font-serif text-3xl text-espresso py-4 border-b border-espresso/5" data-tab="story">הסיפור שלנו</button>
+      <button type="button" class="m-link tab-trigger text-right font-serif text-3xl text-espresso py-4 border-b border-espresso/5" data-tab="menu">התפריט</button>
+      <button type="button" class="m-link tab-trigger text-right font-serif text-3xl text-espresso py-4 border-b border-espresso/5" data-tab="guide">המדריך למבקר</button>
+      <button type="button" class="m-link tab-trigger text-right font-serif text-3xl text-espresso py-4" data-tab="contact">צור קשר והגעה</button>
+    </nav>
+    <div class="p-8">
+      <a href="https://waze.com/ul?q=מורקפה%20עלומים&navigate=yes" target="_blank" rel="noopener"
+         class="m-link flex items-center justify-center gap-2 w-full bg-sage text-canvas text-lg font-medium py-4 rounded-full">
+        נווט בוויז
+      </a>
+    </div>
+  </div>
+
+  <!-- ============ MAIN ============ -->
+  <main id="main" class="relative z-10">
+
+    <!-- ===== TAB 1: HOME ===== -->
+    <section id="tab-home" class="tab-view is-active" role="tabpanel" aria-label="בית">
+      <!-- Hero -->
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-12 lg:pt-20 pb-16">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div class="lg:col-span-5 reveal" style="--delay:0ms">
+            <p class="text-sage text-sm font-medium tracking-[0.2em] mb-5">קיבוץ עלומים · עוטף עזה</p>
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.15] font-bold text-espresso">
+              מורקפה – קפה משובח ומאפים עם לב בלב קיבוץ עלומים
+            </h1>
+            <p class="mt-7 text-lg leading-relaxed text-warmgray max-w-xl">
+              בתוך פינה ירוקה ופסטורלית בעוטף עזה, מחכה לכם חוויה קולינרית ביתית ומלאת חמימות. חצר הראשונים ההיסטורית של הקיבוץ עטופה במדשאות רחבות, עצים עתיקים ופינות ישיבה מוצלות המזמינות אתכם לעצור, לנשום עמוק וליהנות מקפה בוטיק ומאפים טריים הנאפים מדי יום באהבה גדולה. המקום מציע שולחנות פיקניק כפריים, מרחב פתוח למשפחות וזוגות, ומבנה מקורה וממוזג לימים החמים.
+            </p>
+            <div class="mt-9 flex flex-wrap gap-4">
+              <a href="https://waze.com/ul?q=מורקפה%20עלומים&navigate=yes" target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-2 bg-sage text-canvas font-medium px-8 py-3.5 rounded-full hover:bg-sage/90 transition-colors duration-300">
+                נווט בוויז
+              </a>
+              <button type="button" class="tab-trigger inline-flex items-center gap-2 border border-espresso/15 text-espresso font-medium px-8 py-3.5 rounded-full hover:border-sage hover:text-sage transition-colors duration-300" data-tab="menu">
+                צפה בתפריט
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 reveal" style="--delay:120ms">
+            <figure class="img-frame rounded-[2rem] shadow-2xl shadow-espresso/10">
+              <img src="https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png"
+                   alt="עגלת הקפה של מורקפה בחצר הראשונים, מוקפת בירק ובפינות ישיבה מוצלות"
+                   class="w-full h-[340px] sm:h-[460px] lg:h-[560px] object-cover" loading="eager" decoding="async" width="1200" height="800" />
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating info grid -->
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-16">
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <div class="reveal bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:60ms">
+            <h2 class="font-serif text-xl font-bold text-espresso mb-4">מתי אנחנו פתוחים</h2>
+            <ul class="space-y-2 text-warmgray leading-relaxed">
+              <li>ימי חמישי: 08:30 – 13:30</li>
+              <li>ימי שישי: 08:30 – 13:00</li>
+              <li>שאר הימים: סגור (כולל שבת)</li>
+            </ul>
+          </div>
+          <div class="reveal bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:140ms">
+            <h2 class="font-serif text-xl font-bold text-espresso mb-4">איך מגיעים</h2>
+            <ul class="space-y-2 text-warmgray leading-relaxed">
+              <li>חצר הראשונים, קיבוץ עלומים.</li>
+              <li>חפשו 'מורקפה' בוויז לניווט ישיר.</li>
+              <li>חנייה חופשית בשפע במתחם.</li>
+            </ul>
+          </div>
+          <div class="reveal bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:220ms">
+            <h2 class="font-serif text-xl font-bold text-espresso mb-4">איכות וכשרות</h2>
+            <ul class="space-y-2 text-warmgray leading-relaxed">
+              <li>כל המנות מיוצרות במקום בעבודת יד.</li>
+              <li>המקום כשר עם תעודה מוצגת.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instagram ticker -->
+      <div class="bg-sage/10 border-y border-sage/15 overflow-hidden py-4">
+        <div class="ticker-track whitespace-nowrap text-sage font-medium text-sm sm:text-base">
+          מגיעים מרחוק? מומלץ להתעדכן בדף האינסטגרם שלנו ‎@cakes_and_mor‎ לפני ההגעה כדי לוודא שעות פעילות ועדכונים מהעגלה! &nbsp;·&nbsp; מגיעים מרחוק? מומלץ להתעדכן בדף האינסטגרם שלנו ‎@cakes_and_mor‎ לפני ההגעה כדי לוודא שעות פעילות ועדכונים מהעגלה!
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TAB 2: OUR STORY ===== -->
+    <section id="tab-story" class="tab-view" role="tabpanel" aria-label="הסיפור שלנו">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
+        <header class="max-w-3xl reveal">
+          <p class="text-sage text-sm font-medium tracking-[0.2em] mb-4">הסיפור שלנו</p>
+          <h1 class="font-serif text-4xl sm:text-5xl font-bold text-espresso leading-tight">הלב שמאחורי המאפה והקפה</h1>
+        </header>
+
+        <blockquote class="reveal my-14 lg:my-20 border-r-2 border-sage pr-7 max-w-3xl" style="--delay:80ms">
+          <p class="font-serif text-2xl sm:text-3xl leading-snug text-espresso/90 italic">
+            „הרעיון נולד מתוך געגוע הביתה, והרצון להחזיר את האור, המורל והשגרה הנעימה לקהילה שכל כך אוהבת את האדמה הזו.”
+          </p>
+        </blockquote>
+
+        <!-- Chapter 1 + image -->
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-20 lg:mb-28">
+          <div class="reveal order-2 lg:order-1">
+            <span class="text-taupe font-serif text-sm tracking-widest">פרק ראשון</span>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5">הבית, המשפחה והתשוקה לקולינריה</h2>
+            <p class="text-lg leading-relaxed text-warmgray">
+              מור ואלון, הורים לארבעה ילדים, תמיד חיו ונשמו קולינריה ואירוח. מור, קונדיטורית מקצועית ובעלת קייטרינג מצליח, הפכה את האהבה שלה לבצקים, מתוקים וטעמים ביתיים למפעל חיים קטן. יחד עם אלון, הם חלמו תמיד על מקום מפגש קהילתי שישלב קפה בלתי מתפשר עם אפייה עילית.
+            </p>
+          </div>
+          <figure class="reveal order-1 lg:order-2 img-frame rounded-[2rem] shadow-xl shadow-espresso/10" style="--delay:120ms">
+            <img src="https://i.postimg.cc/gk2LQVXs/Chat-GPT-Image-Jun-3-2026-08-59-27-AM.png"
+                 alt="מלאכת האפייה במורקפה — אבקת סוכר מתפזרת על מאפה טרי בעבודת יד"
+                 class="w-full h-[320px] sm:h-[440px] object-cover" loading="lazy" decoding="async" width="900" height="700" />
+          </figure>
+        </div>
+
+        <!-- Chapter 2 -->
+        <div class="reveal max-w-3xl mx-auto text-center mb-20 lg:mb-28">
+          <span class="text-taupe font-serif text-sm tracking-widest">פרק שני</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5">מתוך השבר – הרעיון שנולד במלון בשרון</h2>
+          <p class="text-lg leading-relaxed text-warmgray text-right">
+            בתקופת מלחמת חרבות ברזל, פונה קיבוץ עלומים למלון באזור השרון. הימים היו ימים של חוסר ודאות, ריחוק מהבית וגעגוע עמוק לשקט של העוטף. דווקא שם, מתוך הרצון להרים את המורל של חברי הקיבוץ המפונים, ליצור עבורם אי של שפיות וחמימות ולחבר אותם מחדש דרך ריחות של אפייה, נולד הרעיון של מורקפה.
+          </p>
+        </div>
+
+        <!-- Chapter 3 -->
+        <div class="reveal max-w-3xl mx-auto">
+          <span class="text-taupe font-serif text-sm tracking-widest">פרק שלישי</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5">השיבה לעלומים והקמת העגלה</h2>
+          <p class="text-lg leading-relaxed text-warmgray">
+            עם חזרתם של תושבי הקיבוץ הביתה אל השדרה המשופצת, מור ואלון החליטו להפוך את החלום למציאות בשטח. הם הקימו את מורקפה בחצר הראשונים ההיסטורית – לא רק כעסק, אלא כעוגן קהילתי, מקום מפגש חם ושוקק חיים התומך בשגרת החיים החדשה והנעימה של האזור. כל מאפה, כריך או קינוח שתטעמו כאן מיוצר על ידי מור בעצמה, מאפס, עם חומרי הגלם הטובים ביותר והמון אהבה.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TAB 3: MENU ===== -->
+    <section id="tab-menu" class="tab-view" role="tabpanel" aria-label="התפריט">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
+        <header class="max-w-3xl reveal mb-14">
+          <p class="text-sage text-sm font-medium tracking-[0.2em] mb-4">התפריט</p>
+          <h1 class="font-serif text-4xl sm:text-5xl font-bold text-espresso leading-tight">תפריט מוקפד ואיכותי – 100% תוצרת בית</h1>
+        </header>
+
+        <!-- Category 1 -->
+        <div class="mb-16 lg:mb-24">
+          <h2 class="reveal font-serif text-2xl sm:text-3xl font-bold text-sage border-b border-sage/20 pb-4 mb-8">קפה ומשקאות חמים וקרים</h2>
+          <div class="grid sm:grid-cols-2 gap-x-12 gap-y-8">
+            <article class="reveal" style="--delay:40ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">משקאות אספרסו קלאסיים</h3>
+              <p class="text-warmgray leading-relaxed">אספרסו קצר/ארוך, קפוצ'ינו עשיר, אמריקנו, והפוך מפנק על בסיס פולי קפה מובחרים.</p>
+            </article>
+            <article class="reveal" style="--delay:100ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">משקאות קרים ושייקים</h3>
+              <p class="text-warmgray leading-relaxed">משקאות קפה קר מרעננים, שייקים מפירות טבעיים על בסיס מים או חלב.</p>
+            </article>
+            <article class="reveal" style="--delay:160ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">מאצ'ה לאטה פרימיום</h3>
+              <p class="text-warmgray leading-relaxed">משקה מאצ'ה יפנית איכותית מאוזנת ורעננה.</p>
+            </article>
+            <article class="reveal" style="--delay:220ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">שוקו פרלינים בלגי</h3>
+              <p class="text-warmgray leading-relaxed">שוקו חם עשיר וחלומי הממיס פרלינים של שוקולד בלגי אמיתי לתוך החלב.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="mb-16 lg:mb-24">
+          <h2 class="reveal font-serif text-2xl sm:text-3xl font-bold text-sage border-b border-sage/20 pb-4 mb-8">מאפים מלוחים וכריכים טריים</h2>
+
+          <!-- Signature item with image -->
+          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-10">
+            <figure class="reveal img-frame rounded-[2rem] shadow-xl shadow-espresso/10">
+              <img src="https://i.postimg.cc/Zq2LKfNf/Chat-GPT-Image-Jun-3-2026-08-59-34-AM.png"
+                   alt="חלת סלט ביצים – מנת הדגל של מורקפה במילוי עשיר ובצל מקורמל"
+                   class="w-full h-[300px] sm:h-[400px] object-cover" loading="lazy" decoding="async" width="900" height="700" />
+            </figure>
+            <article class="reveal" style="--delay:120ms">
+              <span class="inline-block text-xs font-medium tracking-widest text-canvas bg-taupe rounded-full px-3 py-1 mb-3">מנת הדגל</span>
+              <h3 class="font-serif text-2xl font-bold text-espresso mb-3">חלת סלט ביצים</h3>
+              <p class="text-lg text-warmgray leading-relaxed">חלה אישית רכה וטרייה במילוי סלט ביצים עשיר, בצל מקורמל בעדינות ונגיעות עירית רעננה.</p>
+            </article>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-x-12 gap-y-8">
+            <article class="reveal" style="--delay:40ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">כריך סלק וקממבר</h3>
+              <p class="text-warmgray leading-relaxed">לחמניית פרצעל פריכה בעבודת יד, גבינת קממבר צרפתית עשירה, פרוסות סלק צלוי ועלים ירוקים.</p>
+            </article>
+            <article class="reveal" style="--delay:100ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">כריך טבעוני מושקע</h3>
+              <p class="text-warmgray leading-relaxed">לחם מחמצת טרי עם ממרחים ביתיים, ירקות קלויים ועלים רעננים.</p>
+            </article>
+            <article class="reveal sm:col-span-2" style="--delay:160ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">סלטים מרעננים וחטיפי בריאות</h3>
+              <p class="text-warmgray leading-relaxed">סלטים עונתיים הנחתכים במקום וחטיפי אנרגיה טבעיים מחומרי גלם איכותיים.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="mb-12">
+          <h2 class="reveal font-serif text-2xl sm:text-3xl font-bold text-sage border-b border-sage/20 pb-4 mb-8">מאפים מתוקים וקינוחי קונדיטוריה</h2>
+
+          <div class="grid sm:grid-cols-2 gap-x-12 gap-y-8 mb-10">
+            <article class="reveal" style="--delay:40ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">עוגות ומאפי בוקר</h3>
+              <p class="text-warmgray leading-relaxed">עוגות שוקולד עשירות, עוגות גבינה נימוחות ומבחר עוגיות חמאה נמסות בפה.</p>
+            </article>
+            <article class="reveal" style="--delay:100ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">טירמיסו איטלקאי קלאסי</h3>
+              <p class="text-warmgray leading-relaxed">שכבות של מסקרפונה עשירה, בישקוטים ספוגים באספרסו וקקאו איכותי.</p>
+            </article>
+          </div>
+
+          <!-- Signature dessert with image -->
+          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-10">
+            <article class="reveal order-2 lg:order-1" style="--delay:120ms">
+              <span class="inline-block text-xs font-medium tracking-widest text-canvas bg-taupe rounded-full px-3 py-1 mb-3">קינוח חתימה</span>
+              <h3 class="font-serif text-2xl font-bold text-espresso mb-3">עוגת באסקה חרוכה</h3>
+              <p class="text-lg text-warmgray leading-relaxed">עוגת גבינה באסקית אפויה בטמפרטורה גבוהה למרקם קרמי וקטיפתי מבפנים.</p>
+            </article>
+            <figure class="reveal order-1 lg:order-2 img-frame rounded-[2rem] shadow-xl shadow-espresso/10">
+              <img src="https://i.postimg.cc/N0p4qsG0/Gemini-Generated-Image-(1)-clean.png"
+                   alt="עוגת באסקה חרוכה – קינוח החתימה של מורקפה במרקם קרמי וקטיפתי"
+                   class="w-full h-[300px] sm:h-[400px] object-cover" loading="lazy" decoding="async" width="900" height="700" />
+            </figure>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-x-12 gap-y-8">
+            <article class="reveal" style="--delay:40ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">קראק פאי עונתי</h3>
+              <p class="text-warmgray leading-relaxed">פאי שיבולת שועל וחמאה חום, עשיר, מתוק וממכר (מוגש לפי העונה).</p>
+            </article>
+            <article class="reveal" style="--delay:100ms">
+              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">לחמים ביתיים וקינוחים מתחלפים</h3>
+              <p class="text-warmgray leading-relaxed">בכל שבוע מור מפתיעה עם לחמי מחמצת מיוחדים וקינוחי בוטיק משתנים.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Special banner -->
+        <div class="reveal bg-sage text-canvas rounded-[2rem] p-8 sm:p-10 mt-6">
+          <p class="text-lg leading-relaxed">
+            <span class="font-bold">שימו לב:</span> בימי שישי אנחנו שמים דגש מיוחד על קונדיטוריה חגיגית – עוגות משפחתיות, מאפים מיוחדים ומארזי עוגיות טריות בעבודת יד כדי להמתיק לכם את סוף השבוע ולכבוד שבת!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TAB 4: VISITOR GUIDE ===== -->
+    <section id="tab-guide" class="tab-view" role="tabpanel" aria-label="המדריך למבקר">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
+        <header class="max-w-3xl reveal mb-8">
+          <p class="text-sage text-sm font-medium tracking-[0.2em] mb-4">המדריך למבקר</p>
+          <h1 class="font-serif text-4xl sm:text-5xl font-bold text-espresso leading-tight">חוויית הביקור במרחב הפתוח</h1>
+        </header>
+
+        <p class="reveal max-w-3xl text-lg leading-relaxed text-warmgray mb-12" style="--delay:80ms">
+          הביקור במורקפה הוא הרבה מעבר לעצירת קפה רגילה, הוא הזדמנות ליהנות מקצב חיים רגוע יותר ומחוויית פיקניק כפרית מושלמת בלב הטבע של עוטף עזה. הנה כמה דברים שכדאי לדעת כדי ליהנות מהביקור שלכם בצורה המיטבית:
+        </p>
+
+        <!-- Signature widescreen image -->
+        <figure class="reveal img-frame rounded-[2.5rem] shadow-2xl shadow-espresso/10 mb-16">
+          <img src="https://i.postimg.cc/mDjKnfJC/Gemini-Generated-Image-clean.png"
+               alt="אורחים יושבים סביב שולחנות פיקניק במרחב המוצל והפתוח של מורקפה"
+               class="w-full h-[300px] sm:h-[450px] lg:h-[520px] object-cover" loading="lazy" decoding="async" width="1400" height="800" />
+        </figure>
+
+        <div class="grid lg:grid-cols-3 gap-8 lg:gap-10">
+          <article class="reveal" style="--delay:40ms">
+            <span class="font-serif text-sage text-4xl font-bold">01</span>
+            <h2 class="font-serif text-xl sm:text-2xl font-bold text-espresso mt-3 mb-4">תרבות הפיקניק והמדשאות</h2>
+            <p class="text-warmgray leading-relaxed">
+              המתחם שלנו מוקף במרבדי דשא ירוקים ורחבי ידיים תחת עצים עתיקים ומצילים. לצד שולחנות הפיקניק הכפריים שהצבנו במקום, המבקרים שלנו יותר ממוזמנים להביא איתם מחצלות פיקניק מהבית, למצוא פינה שקטה ופסטורלית על הדשא, ולפרוס עליה את הכריכים והמאפים הטריים לצד הקפה הבוטיק שלנו.
+            </p>
+          </article>
+          <article class="reveal" style="--delay:120ms">
+            <span class="font-serif text-sage text-4xl font-bold">02</span>
+            <h2 class="font-serif text-xl sm:text-2xl font-bold text-espresso mt-3 mb-4">חלל מקורה וממוזג</h2>
+            <p class="text-warmgray leading-relaxed">
+              מזג האוויר השתנה? חם מדי בחוץ או גשום? אל דאגה. לצד המרחב הפתוח, עומד לרשותכם מבנה היסטורי משופץ, סגור וממוזג לחלוטין. זהו אי של שקט קולינרי נעים ומזמין שבו תוכלו לשבת וליהנות מהקינוחים של מור בכל עונה ובכל מזג אוויר.
+            </p>
+          </article>
+          <article class="reveal" style="--delay:200ms">
+            <span class="font-serif text-sage text-4xl font-bold">03</span>
+            <h2 class="font-serif text-xl sm:text-2xl font-bold text-espresso mt-3 mb-4">משלבים קפה וטבע אזורי</h2>
+            <p class="text-warmgray leading-relaxed">
+              העגלה ממוקמת בנקודת זינוק מושלמת לטיולים בדרום האיכותי. הביקור אצלנו מתחבר בצורה קלאסית עם ימי טיול וסיור באתרי הטבע המרהיבים שסביבנו: יער שוקדה, יער בארי, גן לאומי הבשור (פארק אש), ומרבדי הכלניות המפורסמים המכסים את האדמה בשטיח אדום מרהיב במהלך עונת 'דרום אדום'. המקום מהווה גם נקודת עצירה מושלמת, איכותית ומרעננת למטיילים הנוסעים דרומה לכיוון אילת.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TAB 5: CONTACT & ARRIVAL ===== -->
+    <section id="tab-contact" class="tab-view" role="tabpanel" aria-label="צור קשר והגעה">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
+        <header class="max-w-3xl reveal mb-14">
+          <p class="text-sage text-sm font-medium tracking-[0.2em] mb-4">צור קשר והגעה</p>
+          <h1 class="font-serif text-4xl sm:text-5xl font-bold text-espresso leading-tight">נשמח לראותכם בין אורחינו</h1>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+          <!-- Left column: access -->
+          <div class="reveal space-y-8" style="--delay:60ms">
+            <div>
+              <h2 class="font-serif text-xl font-bold text-espresso mb-3">שעות פעילות מדויקות</h2>
+              <ul class="space-y-1.5 text-warmgray leading-relaxed">
+                <li>יום חמישי: 08:30 – 13:30</li>
+                <li>יום שישי: 08:30 – 13:00</li>
+                <li>ימי שבת עד רביעי: סגור ומסוגר.</li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="font-serif text-xl font-bold text-espresso mb-3">כתובת פיזית</h2>
+              <p class="text-warmgray leading-relaxed">חצר הראשונים, קיבוץ עלומים (חבל הבשור, עוטף עזה).</p>
+            </div>
+            <div>
+              <h2 class="font-serif text-xl font-bold text-espresso mb-3">ניווט והגעה</h2>
+              <p class="text-warmgray leading-relaxed">פשוט הקלידו „מורקפה” באפליקציית Waze או Google Maps לניווט ישיר לחנייה החופשית והרחבה הצמודה לעגלה.</p>
+            </div>
+            <a href="https://waze.com/ul?q=מורקפה%20עלומים&navigate=yes" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 bg-sage text-canvas font-medium px-8 py-3.5 rounded-full hover:bg-sage/90 transition-colors duration-300">
+              לחצו לניווט ישיר ב-Waze
+            </a>
+          </div>
+
+          <!-- Right column: digital -->
+          <div class="reveal bg-white/70 backdrop-blur-md rounded-[2rem] p-8 sm:p-10 border border-espresso/5 space-y-8" style="--delay:160ms">
+            <div>
+              <h2 class="font-serif text-xl font-bold text-espresso mb-2">קו ישיר לעגלה (טלפון)</h2>
+              <a href="tel:+972547792646" class="text-warmgray hover:text-sage transition-colors" dir="ltr">054-7792646</a>
+            </div>
+            <div>
+              <h2 class="font-serif text-xl font-bold text-espresso mb-2">כתובת דואר אלקטרוני</h2>
+              <a href="mailto:cakes.mor@gmail.com" class="text-warmgray hover:text-sage transition-colors" dir="ltr">cakes.mor@gmail.com</a>
+            </div>
+            <div>
+              <h2 class="font-serif text-xl font-bold text-espresso mb-3">הצטרפו לקהילה הדיגיטלית שלנו לעדכונים חיים מהטאבון והקונדיטוריה</h2>
+              <div class="flex flex-wrap gap-3">
+                <a href="https://www.instagram.com/cakes_and_mor" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-2 border border-espresso/15 rounded-full px-5 py-2.5 text-espresso hover:border-sage hover:text-sage transition-colors">
+                  אינסטגרם ‎@cakes_and_mor
+                </a>
+                <a href="https://www.tiktok.com/@morcafe12" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-2 border border-espresso/15 rounded-full px-5 py-2.5 text-espresso hover:border-sage hover:text-sage transition-colors">
+                  טיקטוק ‎@morcafe12
+                </a>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-espresso/5">
+              <h2 class="font-serif text-base font-bold text-taupe mb-3">מומלצים במדריכי התיירות והקולינריה המובילים</h2>
+              <p class="text-warmgray leading-relaxed mb-3">מורקפה גאה להופיע ולהיות מומלצת במדריכי התיירות והקולינריה המובילים:</p>
+              <div class="flex flex-wrap gap-2 text-sm">
+                <span class="bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">Coffee Trail (מסלול הקפה)</span>
+                <span class="bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">תיירות הבשור דרום אדום</span>
+                <span class="bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">Where to Eat</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Golden tip callout -->
+        <div class="reveal mt-12 bg-taupe/10 border border-taupe/20 rounded-[2rem] p-8 sm:p-10" style="--delay:240ms">
+          <h2 class="font-serif text-xl font-bold text-espresso mb-2">טיפ זהב מהבאריסטה</h2>
+          <p class="text-lg leading-relaxed text-warmgray">
+            המקום פופולרי מאוד בסופי השבוע ומאפי הבוקר המיוחדים של מור נחטפים במהירות. מומלץ להגיע בשעות הבוקר המוקדמות כדי להבטיח לעצמכם את הבחירה המלאה מהוויטרינה!
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="relative z-10 border-t border-espresso/5 bg-canvas">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="text-center sm:text-right">
+        <p class="font-serif text-2xl font-bold text-espresso">מורקפה</p>
+        <p class="text-sm text-warmgray mt-1">חצר הראשונים, קיבוץ עלומים · עוטף עזה</p>
+        <p class="text-sm text-warmgray mt-3">© 2026 מורקפה</p>
+      </div>
+      <div class="inline-flex items-center gap-2 bg-sage/10 border border-sage/20 rounded-full px-5 py-2.5">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>
+        </svg>
+        <span class="text-sage font-medium">כשר עם תעודה</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ TOAST ============ -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-espresso text-canvas px-6 py-3.5 rounded-full shadow-2xl opacity-0 translate-y-4 pointer-events-none text-sm font-medium"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var tabs = ['home', 'story', 'menu', 'guide', 'contact'];
+      var triggers = document.querySelectorAll('.tab-trigger, [data-tab]');
+      var mobileMenu = document.getElementById('mobileMenu');
+      var menuToggle = document.getElementById('menuToggle');
+      var menuClose = document.getElementById('menuClose');
+      var toast = document.getElementById('toast');
+      var toastTimer;
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.remove('opacity-0', 'translate-y-4');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toast.classList.add('opacity-0', 'translate-y-4');
+        }, 3200);
+      }
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add('hidden-menu');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      function openMobileMenu() {
+        mobileMenu.classList.remove('hidden-menu');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        // stagger mobile links
+        var links = mobileMenu.querySelectorAll('.m-link');
+        links.forEach(function (l, i) {
+          l.style.animationDelay = (i * 60) + 'ms';
+        });
+      }
+
+      function activateTab(name) {
+        if (tabs.indexOf(name) === -1) name = 'home';
+
+        document.querySelectorAll('.tab-view').forEach(function (v) {
+          v.classList.remove('is-active');
+        });
+        var view = document.getElementById('tab-' + name);
+        if (view) {
+          // force reflow so re-entering a tab replays the animation
+          view.classList.add('is-active');
+          var reveals = view.querySelectorAll('.reveal');
+          reveals.forEach(function (r) {
+            r.style.animation = 'none';
+            void r.offsetWidth;
+            r.style.animation = '';
+          });
+        }
+
+        // update nav state
+        document.querySelectorAll('.nav-link').forEach(function (n) {
+          if (n.getAttribute('data-tab') === name) {
+            n.setAttribute('aria-current', 'page');
+          } else {
+            n.removeAttribute('aria-current');
+          }
+        });
+
+        if (location.hash !== '#' + name) {
+          history.replaceState(null, '', '#' + name);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      triggers.forEach(function (t) {
+        t.addEventListener('click', function (e) {
+          var name = t.getAttribute('data-tab');
+          if (!name) return;
+          e.preventDefault();
+          activateTab(name);
+          if (!mobileMenu.classList.contains('hidden-menu')) {
+            closeMobileMenu();
+          }
+          if (name === 'menu') {
+            // gentle nudge that we landed on the menu
+          }
+        });
+      });
+
+      menuToggle.addEventListener('click', openMobileMenu);
+      menuClose.addEventListener('click', closeMobileMenu);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden-menu')) {
+          closeMobileMenu();
+        }
+      });
+
+      // Waze links → friendly toast (non-blocking, link still works)
+      document.querySelectorAll('a[href*="waze.com"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          showToast('פותחים ניווט ב-Waze אל מורקפה…');
+        });
+      });
+
+      // Init from hash
+      var initial = (location.hash || '').replace('#', '');
+      activateTab(tabs.indexOf(initial) !== -1 ? initial : 'home');
+    })();
+  </script>
+</body>
+</html>
