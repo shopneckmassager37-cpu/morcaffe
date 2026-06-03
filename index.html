@@ -928,6 +928,9 @@
       if (prefersReduced || !('IntersectionObserver' in window)) {
         revealEls.forEach(function (el) { el.classList.add('in-view'); });
       } else {
+        // Trigger line sits ~35% up from the bottom of the viewport, so each
+        // block reveals only once it has scrolled well into view — giving a
+        // true one-by-one cascade instead of grouped entrances on mobile.
         var io = new IntersectionObserver(function (entries, obs) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -935,11 +938,10 @@
               obs.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+        }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
 
-        revealEls.forEach(function (el, i) {
-          // gentle stagger so siblings in view cascade one after another
-          el.style.transitionDelay = ((i % 4) * 110) + 'ms';
+        revealEls.forEach(function (el) {
+          el.style.transitionDelay = '0ms';
           io.observe(el);
         });
       }
