@@ -8,24 +8,21 @@
   <title>מורקפה – קפה בוטיק ומאפים ביתיים בקיבוץ עלומים</title>
   <meta name="description" content="מורקפה – עגלת קפה בוטיק ומאפים ביתיים בחצר הראשונים בקיבוץ עלומים. קפה משובח, אפייה טרייה יומיומית ומרחב פיקניק פסטורלי בלב עוטף עזה. כשר עם תעודה." />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="restaurant" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="מורקפה" />
   <meta property="og:title" content="מורקפה – קפה משובח ומאפים עם לב בלב קיבוץ עלומים" />
-  <meta property="og:description" content="חוויה קולינרית ביתית ומלאת חמימות בחצר הראשונים ההיסטורית בקיבוץ עלומים. קפה בוטיק, מאפים טריים ומרחב פיקניק ירוק ופסטורלי." />
+  <meta property="og:description" content="חוויה קולינרית ביתית ומלאת חמימות בחצר הראשונים ההיסטורית בקיבוץ עלומים." />
   <meta property="og:image" content="https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png" />
   <meta property="og:image:alt" content="עגלת הקפה של מורקפה בחצר הראשונים בקיבוץ עלומים" />
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="מורקפה – קפה משובח ומאפים עם לב בלב קיבוץ עלומים" />
-  <meta name="twitter:description" content="קפה בוטיק ומאפים ביתיים טריים בחצר הראשונים, קיבוץ עלומים. כשר עם תעודה." />
+  <meta name="twitter:description" content="קפה בוטיק ומאפים ביתיים טריים בחצר הראשונים, קיבוץ עלומים." />
   <meta name="twitter:image" content="https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -50,7 +47,6 @@
 
   <style>
     :root { color-scheme: light; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -64,24 +60,38 @@
       text-rendering: optimizeLegibility;
     }
 
-    /* Editorial heading refinement */
-    h1, h2, h3 { letter-spacing: -0.015em; }
-    h1 { text-wrap: balance; }
-    p { text-wrap: pretty; }
-
-    /* Subtle paper grain for an artisanal, handcrafted feel */
+    /* Paper grain */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.4;
-      background-image: radial-gradient(rgba(44,37,32,0.03) 1px, transparent 1px);
+      opacity: 0.35;
+      background-image: radial-gradient(rgba(44,37,32,0.04) 1px, transparent 1px);
       background-size: 22px 22px;
     }
 
-    /* Center-out expanding underline for nav links */
+    h1, h2, h3 { letter-spacing: -0.02em; }
+    h1 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    /* ── Scroll progress bar ── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 2px;
+      z-index: 100;
+      transform-origin: right center;
+      transform: scaleX(0);
+      background: linear-gradient(to left, #8A7A6E, #5D6B59);
+      transition: transform 0.1s linear;
+      pointer-events: none;
+    }
+
+    /* ── Nav ── */
     .nav-link { position: relative; }
     .nav-link::after {
       content: "";
@@ -99,7 +109,7 @@
     .nav-link[aria-current="page"]::after { transform: translateX(-50%) scaleX(1); }
     .nav-link[aria-current="page"] { color: #5D6B59; }
 
-    /* Editorial eyebrow label with a leading hairline */
+    /* ── Eyebrow ── */
     .eyebrow { display: inline-flex; align-items: center; gap: 0.65rem; }
     .eyebrow::before {
       content: "";
@@ -109,40 +119,46 @@
       opacity: 0.55;
     }
 
-    /* Primary CTA micro-interaction (lift + warm shadow) */
+    /* ── CTA buttons ── */
     a.bg-sage, button.bg-sage {
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
                   box-shadow 0.4s ease, background-color 0.3s ease;
     }
     a.bg-sage:hover, button.bg-sage:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 30px -14px rgba(93, 107, 89, 0.6);
+      box-shadow: 0 18px 32px -14px rgba(93, 107, 89, 0.65);
     }
 
-    /* Card hover lift */
+    /* ── Card hover ── */
     .card-hover {
       transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease;
     }
     .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 26px 48px -28px rgba(44, 37, 32, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 28px 52px -28px rgba(44, 37, 32, 0.28);
     }
 
-    /* Refined image frames: warm layered shadow + hairline ring */
+    /* ── Image frames ── */
     .img-frame {
       box-shadow: 0 30px 60px -32px rgba(44, 37, 32, 0.32);
       outline: 1px solid rgba(44, 37, 32, 0.05);
       outline-offset: -1px;
+      overflow: hidden;
     }
+    .img-frame img {
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+    .img-frame:hover img { transform: scale(1.05); }
 
-    /* Accessible focus ring */
+    /* ── Focus ── */
     a:focus-visible, button:focus-visible {
       outline: 2px solid #5D6B59;
       outline-offset: 3px;
       border-radius: 4px;
     }
 
-    /* Tab view transition */
+    /* ── Tab views ── */
     .tab-view { display: none; }
     .tab-view.is-active { display: block; }
     .tab-view.is-active .reveal {
@@ -150,19 +166,11 @@
       animation-delay: var(--delay, 0ms);
     }
     @keyframes revealUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Editorial image hover zoom */
-    .img-frame { overflow: hidden; }
-    .img-frame img {
-      transition: transform 0.7s ease-out;
-      will-change: transform;
-    }
-    .img-frame:hover img { transform: scale(1.04); }
-
-    /* Mobile menu overlay */
+    /* ── Mobile menu ── */
     #mobileMenu {
       transition: opacity 0.4s ease, visibility 0.4s ease;
     }
@@ -175,19 +183,19 @@
       animation: revealUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
-    /* Toast */
+    /* ── Toast ── */
     #toast {
       transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Brand logo mark */
+    /* ── Brand mark ── */
     .brand-mark {
       background: linear-gradient(140deg, #6B7A66 0%, #5D6B59 55%, #8A7A6E 140%);
       transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
     }
     .brand:hover .brand-mark {
-      transform: rotate(-7deg) scale(1.06);
-      box-shadow: 0 10px 24px -10px rgba(93,107,89,0.7);
+      transform: rotate(-7deg) scale(1.08);
+      box-shadow: 0 12px 28px -10px rgba(93,107,89,0.7);
     }
     .brand-mark .steam {
       animation: steam 3.4s ease-in-out infinite;
@@ -195,28 +203,308 @@
     }
     @keyframes steam {
       0%, 100% { opacity: 0.45; transform: translateY(0.5px); }
-      50% { opacity: 1; transform: translateY(-1px); }
+      50%       { opacity: 1;    transform: translateY(-1.5px); }
     }
 
-    /* Scroll-triggered reveal (chapters enter one by one) */
+    /* ── Scroll-reveal ── */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(34px);
-      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
-                  transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: translateY(36px);
+      transition: opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+                  transform 0.85s cubic-bezier(0.25, 1, 0.5, 1);
     }
     .scroll-reveal.in-view { opacity: 1; transform: none; }
 
-    /* Soft decorative accent blobs */
+    /* ── Accent blobs ── */
     .accent-blob {
       position: absolute;
       border-radius: 9999px;
-      filter: blur(60px);
-      opacity: 0.5;
+      filter: blur(70px);
+      opacity: 0.45;
       pointer-events: none;
       z-index: -1;
     }
 
+    /* ════════════════════════════════════
+       HERO — full-bleed cinematic
+    ════════════════════════════════════ */
+    .hero-wrap {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      transform: scale(1.04);
+      animation: heroZoom 18s ease-out forwards;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(44,37,32,0.82) 0%,
+        rgba(44,37,32,0.45) 45%,
+        rgba(44,37,32,0.10) 100%
+      );
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    /* Decorative giant background word */
+    .hero-ghost-word {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Frank Ruhl Libre', Georgia, serif;
+      font-size: clamp(10rem, 28vw, 22rem);
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.07);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 1;
+      user-select: none;
+      letter-spacing: -0.04em;
+    }
+
+    /* Floating pill badge */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(251,249,246,0.15);
+      border: 1px solid rgba(251,249,246,0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 9999px;
+      padding: 0.4rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: rgba(251,249,246,0.85);
+      text-transform: uppercase;
+      animation: revealUp 0.8s 0.1s both;
+    }
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #5D6B59;
+      animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero-h1 {
+      font-family: 'Frank Ruhl Libre', Georgia, serif;
+      font-size: clamp(2.4rem, 6.5vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      color: #FBF9F6;
+      letter-spacing: -0.03em;
+      text-shadow: 0 2px 40px rgba(44,37,32,0.4);
+    }
+
+    /* ── Stats strip ── */
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .stat-number {
+      font-family: 'Frank Ruhl Libre', Georgia, serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 4vw, 3.5rem);
+      color: #5D6B59;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #8A7A6E;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    /* ── Info cards enhanced ── */
+    .info-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Photo gallery grid ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.65fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
+      height: 500px;
+    }
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 260px 180px 180px;
+        height: auto;
+      }
+    }
+    .gallery-main {
+      grid-row: span 2;
+    }
+    .gallery-item {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      padding: 1rem 1.25rem 0.9rem;
+      background: linear-gradient(to top, rgba(44,37,32,0.65), transparent);
+      color: rgba(251,249,246,0.92);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transform: translateY(4px);
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; transform: none; }
+
+    /* ── Menu item cards ── */
+    .menu-item-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(44,37,32,0.07);
+      border-radius: 1.25rem;
+      padding: 1.4rem 1.6rem;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  box-shadow 0.4s ease,
+                  border-color 0.3s ease;
+    }
+    .menu-item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 44px -24px rgba(44,37,32,0.22);
+      border-color: rgba(93,107,89,0.18);
+    }
+
+    /* ── Chapter cards ── */
+    .chapter-card {
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(44,37,32,0.07);
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+    }
+    .chapter-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 32px 60px -32px rgba(44,37,32,0.22);
+    }
+    .chapter-num-bg {
+      font-family: 'Frank Ruhl Libre', Georgia, serif;
+      font-size: 9rem;
+      font-weight: 900;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(93,107,89,0.12);
+      position: absolute;
+      top: -1.5rem;
+      right: 1rem;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.06em;
+    }
+
+    /* ── SVG wave dividers ── */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
+
+    /* ── Footer ── */
+    .footer-col-title {
+      font-family: 'Frank Ruhl Libre', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2C2520;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .footer-link {
+      color: #6E645E;
+      font-size: 0.875rem;
+      transition: color 0.25s ease;
+      display: block;
+      line-height: 1;
+      padding: 0.3rem 0;
+    }
+    .footer-link:hover { color: #5D6B59; }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(44,37,32,0.12);
+      border-radius: 9999px;
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      color: #6E645E;
+      transition: border-color 0.25s ease, color 0.25s ease, transform 0.3s ease;
+      text-decoration: none;
+    }
+    .social-pill:hover {
+      border-color: #5D6B59;
+      color: #5D6B59;
+      transform: translateY(-2px);
+    }
+
+    /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after {
@@ -224,20 +512,21 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important;
       }
-      .img-frame:hover img { transform: none; }
+      .img-frame:hover img,
+      .gallery-item:hover img { transform: none; }
       .scroll-reveal { opacity: 1; transform: none; }
+      .hero-bg img { animation: none; }
     }
 
     ::selection { background: #5D6B59; color: #FBF9F6; }
   </style>
 
-  <!-- Structured data: LocalBusiness -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CafeOrCoffeeShop",
     "name": "מורקפה",
-    "description": "עגלת קפה בוטיק ומאפים ביתיים בחצר הראשונים, קיבוץ עלומים. קפה משובח ואפייה טרייה יומיומית במרחב פסטורלי בלב עוטף עזה.",
+    "description": "עגלת קפה בוטיק ומאפים ביתיים בחצר הראשונים, קיבוץ עלומים.",
     "image": "https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png",
     "servesCuisine": ["קפה", "מאפים", "קונדיטוריה"],
     "telephone": "+972-54-7792646",
@@ -250,18 +539,8 @@
       "addressCountry": "IL"
     },
     "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Thursday",
-        "opens": "08:30",
-        "closes": "13:30"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Friday",
-        "opens": "08:30",
-        "closes": "13:00"
-      }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "08:30", "closes": "13:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday",   "opens": "08:30", "closes": "13:00" }
     ],
     "sameAs": [
       "https://www.instagram.com/cakes_and_mor",
@@ -273,12 +552,14 @@
 
 <body class="font-sans antialiased relative">
 
+  <!-- Scroll progress bar -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:right-4 focus:bg-sage focus:text-canvas focus:px-5 focus:py-3 focus:rounded-full">דלגו לתוכן הראשי</a>
 
   <!-- ============ HEADER ============ -->
-  <header class="sticky top-0 z-40 bg-canvas/80 backdrop-blur-md border-b border-espresso/5">
+  <header class="sticky top-0 z-40 bg-canvas/85 backdrop-blur-md border-b border-espresso/5">
     <nav class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-20 flex items-center justify-between" aria-label="ניווט ראשי">
-      <!-- Brand / Logo -->
       <a href="#" data-tab="home" class="brand flex items-center gap-2.5" aria-label="מורקפה — לעמוד הבית">
         <span class="brand-mark relative inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full text-canvas shrink-0 shadow-md shadow-sage/20">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -294,7 +575,6 @@
         </span>
       </a>
 
-      <!-- Desktop nav -->
       <ul class="hidden lg:flex items-center gap-10 text-[15px] font-medium text-warmgray">
         <li><button type="button" class="nav-link tab-trigger" data-tab="home" aria-current="page">בית</button></li>
         <li><button type="button" class="nav-link tab-trigger" data-tab="story">הסיפור שלנו</button></li>
@@ -303,13 +583,12 @@
         <li><button type="button" class="nav-link tab-trigger" data-tab="contact">צור קשר והגעה</button></li>
       </ul>
 
-      <!-- Desktop CTA -->
       <a href="https://waze.com/ul?q=מורקפה%20עלומים&navigate=yes" target="_blank" rel="noopener"
-         class="hidden lg:inline-flex items-center gap-2 bg-sage text-canvas text-sm font-medium px-6 py-2.5 rounded-full hover:bg-sage/90 transition-colors duration-300">
+         class="hidden lg:inline-flex items-center gap-2 bg-sage text-canvas text-sm font-medium px-6 py-2.5 rounded-full">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
         נווט בוויז
       </a>
 
-      <!-- Mobile menu button -->
       <button type="button" id="menuToggle" class="lg:hidden -ml-2 p-2 text-espresso" aria-label="פתיחת תפריט הניווט" aria-expanded="false" aria-controls="mobileMenu">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
           <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
@@ -318,8 +597,8 @@
     </nav>
   </header>
 
-  <!-- ============ MOBILE MENU OVERLAY ============ -->
-  <div id="mobileMenu" class="hidden-menu fixed inset-0 z-50 bg-canvas/90 backdrop-blur-lg lg:hidden flex flex-col" role="dialog" aria-modal="true" aria-label="תפריט ניווט">
+  <!-- ============ MOBILE MENU ============ -->
+  <div id="mobileMenu" class="hidden-menu fixed inset-0 z-50 bg-canvas/95 backdrop-blur-xl lg:hidden flex flex-col" role="dialog" aria-modal="true" aria-label="תפריט ניווט">
     <div class="h-20 px-5 flex items-center justify-between border-b border-espresso/5">
       <span class="brand flex items-center gap-2.5">
         <span class="brand-mark relative inline-flex items-center justify-center w-10 h-10 rounded-full text-canvas shrink-0">
@@ -337,7 +616,7 @@
         </svg>
       </button>
     </div>
-    <nav class="flex-1 flex flex-col justify-center px-8 gap-2" aria-label="ניווט במובייל">
+    <nav class="flex-1 flex flex-col justify-center px-8 gap-1" aria-label="ניווט במובייל">
       <button type="button" class="m-link tab-trigger text-right font-serif text-3xl text-espresso py-4 border-b border-espresso/5" data-tab="home">בית</button>
       <button type="button" class="m-link tab-trigger text-right font-serif text-3xl text-espresso py-4 border-b border-espresso/5" data-tab="story">הסיפור שלנו</button>
       <button type="button" class="m-link tab-trigger text-right font-serif text-3xl text-espresso py-4 border-b border-espresso/5" data-tab="menu">התפריט</button>
@@ -347,6 +626,7 @@
     <div class="p-8">
       <a href="https://waze.com/ul?q=מורקפה%20עלומים&navigate=yes" target="_blank" rel="noopener"
          class="m-link flex items-center justify-center gap-2 w-full bg-sage text-canvas text-lg font-medium py-4 rounded-full">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
         נווט בוויז
       </a>
     </div>
@@ -355,94 +635,220 @@
   <!-- ============ MAIN ============ -->
   <main id="main" class="relative z-10">
 
-    <!-- ===== TAB 1: HOME ===== -->
+    <!-- ═══════════════════════════════
+         TAB 1: HOME
+    ═══════════════════════════════ -->
     <section id="tab-home" class="tab-view is-active" role="tabpanel" aria-label="בית">
-      <!-- Hero -->
-      <div class="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-12 lg:pt-20 pb-16 overflow-hidden">
-        <span class="accent-blob w-72 h-72 -top-10 -right-16" style="background:#5D6B59"></span>
-        <span class="accent-blob w-64 h-64 top-40 -left-20" style="background:#8A7A6E; opacity:0.35"></span>
-        <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div class="lg:col-span-5 reveal" style="--delay:0ms">
-            <p class="eyebrow text-sage text-sm font-medium tracking-[0.2em] mb-5">קיבוץ עלומים · עוטף עזה</p>
-            <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.15] font-bold text-espresso">
-              מורקפה – קפה משובח ומאפים עם לב בלב קיבוץ עלומים
+
+      <!-- ── STEP 1: Cinematic full-bleed hero ── -->
+      <div class="hero-wrap">
+        <div class="hero-bg">
+          <img src="https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png"
+               alt="עגלת הקפה של מורקפה בחצר הראשונים בקיבוץ עלומים"
+               loading="eager" decoding="async" width="1600" height="900" />
+        </div>
+        <div class="hero-overlay"></div>
+
+        <!-- STEP 2: Ghost word decorative -->
+        <span class="hero-ghost-word" aria-hidden="true">קפה</span>
+
+        <!-- Hero content -->
+        <div class="hero-content max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-16 lg:pb-24 pt-24">
+          <div class="reveal max-w-3xl" style="--delay:0ms">
+            <span class="hero-badge mb-6">
+              <span class="hero-badge-dot" aria-hidden="true"></span>
+              קיבוץ עלומים · עוטף עזה
+            </span>
+
+            <!-- STEP 2: Drama typography -->
+            <h1 class="hero-h1 mt-4">
+              קפה משובח.<br/>
+              מאפים עם לב.<br/>
+              <span style="color: rgba(251,249,246,0.65); font-weight: 700;">בלב קיבוץ עלומים.</span>
             </h1>
-            <p class="mt-7 text-lg leading-relaxed text-warmgray max-w-xl">
-              בתוך פינה ירוקה ופסטורלית בעוטף עזה, מחכה לכם חוויה קולינרית ביתית ומלאת חמימות. חצר הראשונים ההיסטורית של הקיבוץ עטופה במדשאות רחבות, עצים עתיקים ופינות ישיבה מוצלות המזמינות אתכם לעצור, לנשום עמוק וליהנות מקפה בוטיק ומאפים טריים הנאפים מדי יום באהבה גדולה. המקום מציע שולחנות פיקניק כפריים, מרחב פתוח למשפחות וזוגות, ומבנה מקורה וממוזג לימים החמים.
+
+            <p class="mt-7 text-lg leading-relaxed max-w-2xl" style="color: rgba(251,249,246,0.78);">
+              בתוך פינה ירוקה ופסטורלית בעוטף עזה, מחכה לכם חוויה קולינרית ביתית ומלאת חמימות. חצר הראשונים ההיסטורית עטופה במדשאות, עצים עתיקים ואפייה טרייה יומיומית עם המון אהבה.
             </p>
+
             <div class="mt-9 flex flex-wrap gap-4">
               <a href="https://waze.com/ul?q=מורקפה%20עלומים&navigate=yes" target="_blank" rel="noopener"
-                 class="inline-flex items-center gap-2 bg-sage text-canvas font-medium px-8 py-3.5 rounded-full hover:bg-sage/90 transition-colors duration-300">
+                 class="inline-flex items-center gap-2.5 bg-sage text-canvas font-semibold px-8 py-4 rounded-full text-base">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
                 נווט בוויז
               </a>
-              <button type="button" class="tab-trigger inline-flex items-center gap-2 border border-espresso/15 text-espresso font-medium px-8 py-3.5 rounded-full hover:border-sage hover:text-sage transition-colors duration-300" data-tab="menu">
+              <button type="button" class="tab-trigger inline-flex items-center gap-2 border border-white/30 text-canvas/90 font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors duration-300 text-base" data-tab="menu">
                 צפה בתפריט
               </button>
             </div>
 
-            <ul class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-warmgray">
+            <!-- Trust badges -->
+            <ul class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm" style="color: rgba(251,249,246,0.7);">
               <li class="flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
                 כשר עם תעודה
               </li>
               <li class="flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
                 אפייה טרייה מדי יום
               </li>
               <li class="flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
                 100% תוצרת בית
               </li>
             </ul>
           </div>
+        </div>
+      </div>
 
-          <div class="lg:col-span-7 reveal" style="--delay:120ms">
-            <figure class="img-frame relative rounded-[2rem]">
-              <img src="https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png"
-                   alt="עגלת הקפה של מורקפה בחצר הראשונים, מוקפת בירק ובפינות ישיבה מוצלות"
-                   class="w-full h-[340px] sm:h-[460px] lg:h-[560px] object-cover" loading="eager" decoding="async" width="1200" height="800" />
-              <div class="absolute bottom-5 left-5 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-canvas/95 backdrop-blur-sm border border-sage/25 shadow-xl flex flex-col items-center justify-center text-center -rotate-6" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
-                <span class="text-sage font-serif text-sm font-bold leading-tight">כשר<br>עם תעודה</span>
-              </div>
-            </figure>
+      <!-- ── STEP 5: Stats strip ── -->
+      <div class="relative bg-canvas border-b border-espresso/6">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-10 reveal">
+          <div class="grid grid-cols-3 gap-4 divide-x divide-espresso/8 rtl:divide-x-reverse">
+            <div class="stat-item px-4">
+              <span class="stat-number">2</span>
+              <span class="stat-label">ימים בשבוע<br/>חמישי ושישי</span>
+            </div>
+            <div class="stat-item px-4">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">תוצרת בית<br/>עבודת יד</span>
+            </div>
+            <div class="stat-item px-4">
+              <span class="stat-number">1</span>
+              <span class="stat-label">עגלה<br/>עם המון לב</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Floating info grid -->
-      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-16">
+      <!-- Wave divider -->
+      <div class="wave-divider" aria-hidden="true" style="margin-top:-1px;">
+        <svg viewBox="0 0 1440 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="40">
+          <path d="M0,20 C360,40 1080,0 1440,20 L1440,0 L0,0 Z" fill="#FBF9F6"/>
+        </svg>
+      </div>
+
+      <!-- ── STEP 3: Enhanced info cards with icons ── -->
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16">
         <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-          <div class="reveal card-hover bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:60ms">
+
+          <!-- Card: hours -->
+          <div class="reveal card-hover bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5 relative overflow-hidden" style="--delay:40ms">
+            <span class="accent-blob w-32 h-32 -top-8 -right-8" style="background:#5D6B59; opacity:0.08; filter:blur(30px);"></span>
+            <div class="info-card-icon" style="background: rgba(93,107,89,0.1);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
             <h2 class="font-serif text-xl font-bold text-espresso mb-4">מתי אנחנו פתוחים</h2>
-            <ul class="space-y-2 text-warmgray leading-relaxed">
-              <li>ימי חמישי: 08:30 – 13:30</li>
-              <li>ימי שישי: 08:30 – 13:00</li>
-              <li>שאר הימים: סגור (כולל שבת)</li>
+            <ul class="space-y-2.5 text-warmgray leading-relaxed">
+              <li class="flex items-start gap-2.5">
+                <span class="text-sage mt-0.5 shrink-0">—</span>
+                <span>ימי חמישי: <strong class="text-espresso font-semibold">08:30 – 13:30</strong></span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-sage mt-0.5 shrink-0">—</span>
+                <span>ימי שישי: <strong class="text-espresso font-semibold">08:30 – 13:00</strong></span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-taupe/70 mt-0.5 shrink-0">—</span>
+                <span class="text-warmgray/70">שאר הימים: סגור (כולל שבת)</span>
+              </li>
             </ul>
           </div>
-          <div class="reveal card-hover bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:140ms">
+
+          <!-- Card: arrival -->
+          <div class="reveal card-hover bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5 relative overflow-hidden" style="--delay:120ms">
+            <span class="accent-blob w-32 h-32 -top-8 -right-8" style="background:#8A7A6E; opacity:0.08; filter:blur(30px);"></span>
+            <div class="info-card-icon" style="background: rgba(138,122,110,0.1);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8A7A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 11l19-9-9 19-2-8-8-2z"/>
+              </svg>
+            </div>
             <h2 class="font-serif text-xl font-bold text-espresso mb-4">איך מגיעים</h2>
-            <ul class="space-y-2 text-warmgray leading-relaxed">
-              <li>חצר הראשונים, קיבוץ עלומים.</li>
-              <li>חפשו 'מורקפה' בוויז לניווט ישיר.</li>
-              <li>חנייה חופשית בשפע במתחם.</li>
+            <ul class="space-y-2.5 text-warmgray leading-relaxed">
+              <li class="flex items-start gap-2.5">
+                <span class="text-taupe mt-0.5 shrink-0">—</span>
+                חצר הראשונים, קיבוץ עלומים.
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-taupe mt-0.5 shrink-0">—</span>
+                חפשו 'מורקפה' בוויז לניווט ישיר.
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-taupe mt-0.5 shrink-0">—</span>
+                חנייה חופשית בשפע במתחם.
+              </li>
             </ul>
           </div>
-          <div class="reveal card-hover bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5" style="--delay:220ms">
+
+          <!-- Card: kosher -->
+          <div class="reveal card-hover bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-espresso/5 relative overflow-hidden" style="--delay:200ms">
+            <span class="accent-blob w-32 h-32 -top-8 -right-8" style="background:#5D6B59; opacity:0.08; filter:blur(30px);"></span>
+            <div class="info-card-icon" style="background: rgba(93,107,89,0.1);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>
+              </svg>
+            </div>
             <h2 class="font-serif text-xl font-bold text-espresso mb-4">איכות וכשרות</h2>
-            <ul class="space-y-2 text-warmgray leading-relaxed">
-              <li>כל המנות מיוצרות במקום בעבודת יד.</li>
-              <li>המקום כשר עם תעודה מוצגת.</li>
+            <ul class="space-y-2.5 text-warmgray leading-relaxed">
+              <li class="flex items-start gap-2.5">
+                <span class="text-sage mt-0.5 shrink-0">—</span>
+                כל המנות מיוצרות במקום בעבודת יד.
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-sage mt-0.5 shrink-0">—</span>
+                המקום כשר עם תעודה מוצגת.
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-sage mt-0.5 shrink-0">—</span>
+                חומרי גלם ממיטב הספקים.
+              </li>
             </ul>
           </div>
         </div>
+      </div>
+
+      <!-- ── STEP 4: Editorial photo gallery ── -->
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-16">
+        <div class="reveal mb-8" style="--delay:60ms">
+          <p class="eyebrow text-taupe text-sm font-medium tracking-[0.2em]">גלריה</p>
+        </div>
+        <div class="gallery-grid reveal" style="--delay:100ms">
+          <!-- Main large image -->
+          <div class="gallery-item gallery-main img-frame" style="border-radius:1.5rem;">
+            <img src="https://i.postimg.cc/WpW1DQz3/Chat-GPT-Image-Jun-3-2026-08-59-09-AM.png"
+                 alt="עגלת מורקפה בחצר הראשונים"
+                 loading="lazy" decoding="async" width="900" height="700" />
+            <div class="gallery-caption">עגלת הקפה בחצר הראשונים</div>
+          </div>
+          <!-- Secondary images -->
+          <div class="gallery-item img-frame" style="border-radius:1.5rem;">
+            <img src="https://i.postimg.cc/gk2LQVXs/Chat-GPT-Image-Jun-3-2026-08-59-27-AM.png"
+                 alt="אפייה ביתית במורקפה"
+                 loading="lazy" decoding="async" width="600" height="400" />
+            <div class="gallery-caption">אפייה ביתית מדי יום</div>
+          </div>
+          <div class="gallery-item img-frame" style="border-radius:1.5rem;">
+            <img src="https://i.postimg.cc/N0p4qsG0/Gemini-Generated-Image-(1)-clean.png"
+                 alt="עוגת באסקה חרוכה של מורקפה"
+                 loading="lazy" decoding="async" width="600" height="400" />
+            <div class="gallery-caption">עוגת באסקה — קינוח החתימה</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave divider before instagram -->
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="50">
+          <path d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z" fill="rgba(93,107,89,0.05)"/>
+        </svg>
       </div>
 
       <!-- Instagram invitation -->
-      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-20">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16">
         <div class="reveal relative overflow-hidden rounded-[2.5rem] bg-white/70 backdrop-blur-md border border-espresso/5 p-8 sm:p-12 flex flex-col md:flex-row md:items-center gap-8">
-          <span class="accent-blob w-56 h-56 -top-10 -left-10" style="background:#8A7A6E; opacity:0.3"></span>
+          <span class="accent-blob w-56 h-56 -top-10 -left-10" style="background:#8A7A6E; opacity:0.25"></span>
           <span class="shrink-0 inline-flex items-center justify-center w-16 h-16 rounded-2xl text-canvas" style="background:linear-gradient(135deg,#8A7A6E 0%,#5D6B59 100%)" aria-hidden="true">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
@@ -462,7 +868,9 @@
       </div>
     </section>
 
-    <!-- ===== TAB 2: OUR STORY ===== -->
+    <!-- ═══════════════════════════════
+         TAB 2: STORY
+    ═══════════════════════════════ -->
     <section id="tab-story" class="tab-view" role="tabpanel" aria-label="הסיפור שלנו">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
         <header class="max-w-3xl reveal">
@@ -488,52 +896,63 @@
         </div>
 
         <blockquote class="reveal my-14 lg:my-20 relative max-w-3xl" style="--delay:80ms">
-          <span class="absolute -top-8 -right-2 font-serif text-7xl text-sage/20 select-none" aria-hidden="true">”</span>
+          <span class="absolute -top-8 -right-2 font-serif text-7xl text-sage/20 select-none" aria-hidden="true">"</span>
           <p class="font-serif text-2xl sm:text-3xl leading-snug text-espresso/90 italic border-r-2 border-sage pr-7">
-            „הרעיון נולד מתוך געגוע הביתה, והרצון להחזיר את האור, המורל והשגרה הנעימה לקהילה שכל כך אוהבת את האדמה הזו.”
+            „הרעיון נולד מתוך געגוע הביתה, והרצון להחזיר את האור, המורל והשגרה הנעימה לקהילה שכל כך אוהבת את האדמה הזו."
           </p>
         </blockquote>
 
-        <!-- Journey timeline -->
-        <div class="relative border-r-2 border-sage/15 pr-7 sm:pr-12 space-y-16 lg:space-y-24">
+        <!-- ── STEP 7: Chapter cards ── -->
+        <div class="space-y-8 lg:space-y-10">
 
-          <!-- Chapter 1 + image -->
-          <div class="scroll-reveal relative">
-            <span class="absolute -right-[2.35rem] sm:-right-[3.85rem] top-1 w-9 h-9 rounded-full bg-sage text-canvas text-sm font-bold flex items-center justify-center ring-4 ring-canvas" aria-hidden="true">1</span>
-            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-              <div class="order-2 lg:order-1">
-                <span class="text-taupe font-serif text-sm tracking-widest">פרק ראשון</span>
-                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5">הבית, המשפחה והתשוקה לקולינריה</h2>
-                <p class="text-lg leading-relaxed text-warmgray">
+          <!-- Chapter 1 -->
+          <div class="scroll-reveal chapter-card">
+            <div class="grid lg:grid-cols-2">
+              <div class="p-8 sm:p-10 lg:p-12 relative">
+                <span class="chapter-num-bg" aria-hidden="true">1</span>
+                <span class="inline-block text-taupe font-serif text-xs tracking-[0.2em] uppercase mb-1">פרק ראשון</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5 relative z-10">הבית, המשפחה והתשוקה לקולינריה</h2>
+                <p class="text-lg leading-relaxed text-warmgray relative z-10">
                   מור ואלון, הורים לארבעה ילדים, תמיד חיו ונשמו קולינריה ואירוח. מור, קונדיטורית מקצועית ובעלת קייטרינג מצליח, הפכה את האהבה שלה לבצקים, מתוקים וטעמים ביתיים למפעל חיים קטן. יחד עם אלון, הם חלמו תמיד על מקום מפגש קהילתי שישלב קפה בלתי מתפשר עם אפייה עילית.
                 </p>
               </div>
-              <figure class="order-1 lg:order-2 img-frame rounded-[2rem] shadow-xl shadow-espresso/10">
+              <figure class="img-frame m-0" style="border-radius:0 2rem 2rem 0; min-height: 280px;">
                 <img src="https://i.postimg.cc/gk2LQVXs/Chat-GPT-Image-Jun-3-2026-08-59-27-AM.png"
-                     alt="מלאכת האפייה במורקפה — אבקת סוכר מתפזרת על מאפה טרי בעבודת יד"
-                     class="w-full h-[320px] sm:h-[440px] object-cover" loading="lazy" decoding="async" width="900" height="700" />
+                     alt="מלאכת האפייה במורקפה"
+                     class="w-full h-full object-cover" style="min-height:280px;" loading="lazy" decoding="async" width="900" height="700" />
               </figure>
             </div>
           </div>
 
           <!-- Chapter 2 -->
-          <div class="scroll-reveal relative max-w-3xl">
-            <span class="absolute -right-[2.35rem] sm:-right-[3.85rem] top-1 w-9 h-9 rounded-full bg-sage text-canvas text-sm font-bold flex items-center justify-center ring-4 ring-canvas" aria-hidden="true">2</span>
-            <span class="text-taupe font-serif text-sm tracking-widest">פרק שני</span>
-            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5">מתוך השבר – הרעיון שנולד במלון בשרון</h2>
-            <p class="text-lg leading-relaxed text-warmgray">
-              בתקופת מלחמת חרבות ברזל, פונה קיבוץ עלומים למלון באזור השרון. הימים היו ימים של חוסר ודאות, ריחוק מהבית וגעגוע עמוק לשקט של העוטף. דווקא שם, מתוך הרצון להרים את המורל של חברי הקיבוץ המפונים, ליצור עבורם אי של שפיות וחמימות ולחבר אותם מחדש דרך ריחות של אפייה, נולד הרעיון של מורקפה.
-            </p>
+          <div class="scroll-reveal chapter-card">
+            <div class="p-8 sm:p-10 lg:p-12 relative" style="background: linear-gradient(135deg, rgba(93,107,89,0.04) 0%, transparent 60%);">
+              <span class="chapter-num-bg" aria-hidden="true">2</span>
+              <span class="inline-block text-taupe font-serif text-xs tracking-[0.2em] uppercase mb-1">פרק שני</span>
+              <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5 relative z-10 max-w-2xl">מתוך השבר – הרעיון שנולד במלון בשרון</h2>
+              <p class="text-lg leading-relaxed text-warmgray relative z-10 max-w-3xl">
+                בתקופת מלחמת חרבות ברזל, פונה קיבוץ עלומים למלון באזור השרון. הימים היו ימים של חוסר ודאות, ריחוק מהבית וגעגוע עמוק לשקט של העוטף. דווקא שם, מתוך הרצון להרים את המורל של חברי הקיבוץ המפונים, ליצור עבורם אי של שפיות וחמימות ולחבר אותם מחדש דרך ריחות של אפייה, נולד הרעיון של מורקפה.
+              </p>
+            </div>
           </div>
 
           <!-- Chapter 3 -->
-          <div class="scroll-reveal relative max-w-3xl">
-            <span class="absolute -right-[2.35rem] sm:-right-[3.85rem] top-1 w-9 h-9 rounded-full bg-sage text-canvas text-sm font-bold flex items-center justify-center ring-4 ring-canvas" aria-hidden="true">3</span>
-            <span class="text-taupe font-serif text-sm tracking-widest">פרק שלישי</span>
-            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5">השיבה לעלומים והקמת העגלה</h2>
-            <p class="text-lg leading-relaxed text-warmgray">
-              עם חזרתם של תושבי הקיבוץ הביתה אל השדרה המשופצת, מור ואלון החליטו להפוך את החלום למציאות בשטח. הם הקימו את מורקפה בחצר הראשונים ההיסטורית – לא רק כעסק, אלא כעוגן קהילתי, מקום מפגש חם ושוקק חיים התומך בשגרת החיים החדשה והנעימה של האזור. כל מאפה, כריך או קינוח שתטעמו כאן מיוצר על ידי מור בעצמה, מאפס, עם חומרי הגלם הטובים ביותר והמון אהבה.
-            </p>
+          <div class="scroll-reveal chapter-card">
+            <div class="grid lg:grid-cols-2">
+              <figure class="img-frame m-0" style="border-radius:2rem 0 0 2rem; min-height: 280px; order: 2;">
+                <img src="https://i.postimg.cc/mDjKnfJC/Gemini-Generated-Image-clean.png"
+                     alt="אורחים יושבים במרחב הפתוח של מורקפה"
+                     class="w-full h-full object-cover" style="min-height:280px;" loading="lazy" decoding="async" width="900" height="700" />
+              </figure>
+              <div class="p-8 sm:p-10 lg:p-12 relative" style="order:1;">
+                <span class="chapter-num-bg" aria-hidden="true">3</span>
+                <span class="inline-block text-taupe font-serif text-xs tracking-[0.2em] uppercase mb-1">פרק שלישי</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-espresso mt-2 mb-5 relative z-10">השיבה לעלומים והקמת העגלה</h2>
+                <p class="text-lg leading-relaxed text-warmgray relative z-10">
+                  עם חזרתם של תושבי הקיבוץ הביתה, מור ואלון החליטו להפוך את החלום למציאות. הם הקימו את מורקפה בחצר הראשונים ההיסטורית – לא רק כעסק, אלא כעוגן קהילתי, מקום מפגש חם ושוקק חיים. כל מאפה, כריך או קינוח שתטעמו כאן מיוצר על ידי מור בעצמה, מאפס, עם חומרי הגלם הטובים ביותר והמון אהבה.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -542,14 +961,16 @@
           <p class="text-warmgray">באהבה גדולה,</p>
           <p class="font-serif text-3xl sm:text-4xl text-sage mt-1">מור ואלון</p>
           <div class="w-16 h-px bg-sage/30 mx-auto mt-5"></div>
-          <button type="button" class="tab-trigger mt-7 inline-flex items-center gap-2 bg-sage text-canvas font-medium px-8 py-3.5 rounded-full hover:bg-sage/90 transition-colors duration-300" data-tab="menu">
+          <button type="button" class="tab-trigger mt-7 inline-flex items-center gap-2 bg-sage text-canvas font-medium px-8 py-3.5 rounded-full" data-tab="menu">
             הכירו את התפריט שלנו
           </button>
         </div>
       </div>
     </section>
 
-    <!-- ===== TAB 3: MENU ===== -->
+    <!-- ═══════════════════════════════
+         TAB 3: MENU
+    ═══════════════════════════════ -->
     <section id="tab-menu" class="tab-view" role="tabpanel" aria-label="התפריט">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
         <header class="max-w-3xl reveal mb-8">
@@ -565,28 +986,30 @@
           <a href="#menu-cat-3" class="text-sm bg-white/70 backdrop-blur-md border border-espresso/10 rounded-full px-5 py-2 text-espresso hover:border-sage hover:text-sage transition-colors">מתוקים וקינוחים</a>
         </nav>
 
+        <!-- ── STEP 6: Visual menu cards ── -->
+
         <!-- Category 1 -->
         <div id="menu-cat-1" class="mb-16 lg:mb-24 scroll-mt-24">
           <h2 class="reveal flex items-center gap-3 font-serif text-2xl sm:text-3xl font-bold text-sage border-b border-sage/20 pb-4 mb-8">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a3 3 0 0 1 0 6h-1"/><path d="M3 8h14v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
             קפה ומשקאות חמים וקרים
           </h2>
-          <div class="grid sm:grid-cols-2 gap-x-12 gap-y-8">
-            <article class="reveal" style="--delay:40ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">משקאות אספרסו קלאסיים</h3>
-              <p class="text-warmgray leading-relaxed">אספרסו קצר/ארוך, קפוצ'ינו עשיר, אמריקנו, והפוך מפנק על בסיס פולי קפה מובחרים.</p>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <article class="menu-item-card reveal" style="--delay:40ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">משקאות אספרסו קלאסיים</h3>
+              <p class="text-warmgray text-sm leading-relaxed">אספרסו קצר/ארוך, קפוצ'ינו עשיר, אמריקנו, והפוך מפנק על בסיס פולי קפה מובחרים.</p>
             </article>
-            <article class="reveal" style="--delay:100ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">משקאות קרים ושייקים</h3>
-              <p class="text-warmgray leading-relaxed">משקאות קפה קר מרעננים, שייקים מפירות טבעיים על בסיס מים או חלב.</p>
+            <article class="menu-item-card reveal" style="--delay:100ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">משקאות קרים ושייקים</h3>
+              <p class="text-warmgray text-sm leading-relaxed">משקאות קפה קר מרעננים, שייקים מפירות טבעיים על בסיס מים או חלב.</p>
             </article>
-            <article class="reveal" style="--delay:160ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">מאצ'ה לאטה פרימיום</h3>
-              <p class="text-warmgray leading-relaxed">משקה מאצ'ה יפנית איכותית מאוזנת ורעננה.</p>
+            <article class="menu-item-card reveal" style="--delay:160ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">מאצ'ה לאטה פרימיום</h3>
+              <p class="text-warmgray text-sm leading-relaxed">משקה מאצ'ה יפנית איכותית מאוזנת ורעננה.</p>
             </article>
-            <article class="reveal" style="--delay:220ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">שוקו פרלינים בלגי</h3>
-              <p class="text-warmgray leading-relaxed">שוקו חם עשיר וחלומי הממיס פרלינים של שוקולד בלגי אמיתי לתוך החלב.</p>
+            <article class="menu-item-card reveal" style="--delay:220ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">שוקו פרלינים בלגי</h3>
+              <p class="text-warmgray text-sm leading-relaxed">שוקו חם עשיר וחלומי הממיס פרלינים של שוקולד בלגי אמיתי לתוך החלב.</p>
             </article>
           </div>
         </div>
@@ -599,34 +1022,34 @@
           </h2>
 
           <!-- Signature item with image -->
-          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-10">
+          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-8">
             <figure class="reveal img-frame rounded-[2rem] shadow-xl shadow-espresso/10">
               <img src="https://i.postimg.cc/Zq2LKfNf/Chat-GPT-Image-Jun-3-2026-08-59-34-AM.png"
-                   alt="חלת סלט ביצים – מנת הדגל של מורקפה במילוי עשיר ובצל מקורמל"
+                   alt="חלת סלט ביצים – מנת הדגל של מורקפה"
                    class="w-full h-[300px] sm:h-[400px] object-cover" loading="lazy" decoding="async" width="900" height="700" />
             </figure>
             <article class="reveal" style="--delay:120ms">
-              <span class="inline-block text-xs font-medium tracking-widest text-canvas bg-taupe rounded-full px-3 py-1 mb-3">מנת הדגל</span>
+              <span class="inline-block text-xs font-semibold tracking-widest text-canvas bg-taupe rounded-full px-3 py-1 mb-4">מנת הדגל</span>
               <h3 class="font-serif text-2xl font-bold text-espresso mb-3">חלת סלט ביצים</h3>
               <p class="text-lg text-warmgray leading-relaxed">חלה אישית רכה וטרייה במילוי סלט ביצים עשיר, בצל מקורמל בעדינות ונגיעות עירית רעננה.</p>
             </article>
           </div>
 
-          <div class="grid sm:grid-cols-2 gap-x-12 gap-y-8">
-            <article class="reveal" style="--delay:40ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">כריך סלק וקממבר</h3>
-              <p class="text-warmgray leading-relaxed">לחמניית פרצעל פריכה בעבודת יד, גבינת קממבר צרפתית עשירה, פרוסות סלק צלוי ועלים ירוקים.</p>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <article class="menu-item-card reveal" style="--delay:40ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">כריך סלק וקממבר</h3>
+              <p class="text-warmgray text-sm leading-relaxed">לחמניית פרצעל פריכה בעבודת יד, גבינת קממבר צרפתית עשירה, פרוסות סלק צלוי ועלים ירוקים.</p>
             </article>
-            <article class="reveal" style="--delay:100ms">
-              <div class="flex items-center gap-2 mb-1.5">
-                <h3 class="font-serif text-xl font-bold text-espresso">כריך טבעוני מושקע</h3>
-                <span class="text-[11px] font-medium tracking-wide text-sage bg-sage/10 border border-sage/20 rounded-full px-2.5 py-0.5">טבעוני</span>
+            <article class="menu-item-card reveal" style="--delay:100ms">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-serif text-lg font-bold text-espresso">כריך טבעוני מושקע</h3>
+                <span class="text-[11px] font-semibold tracking-wide text-sage bg-sage/10 border border-sage/20 rounded-full px-2.5 py-0.5">טבעוני</span>
               </div>
-              <p class="text-warmgray leading-relaxed">לחם מחמצת טרי עם ממרחים ביתיים, ירקות קלויים ועלים רעננים.</p>
+              <p class="text-warmgray text-sm leading-relaxed">לחם מחמצת טרי עם ממרחים ביתיים, ירקות קלויים ועלים רעננים.</p>
             </article>
-            <article class="reveal sm:col-span-2" style="--delay:160ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">סלטים מרעננים וחטיפי בריאות</h3>
-              <p class="text-warmgray leading-relaxed">סלטים עונתיים הנחתכים במקום וחטיפי אנרגיה טבעיים מחומרי גלם איכותיים.</p>
+            <article class="menu-item-card reveal sm:col-span-2" style="--delay:160ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">סלטים מרעננים וחטיפי בריאות</h3>
+              <p class="text-warmgray text-sm leading-relaxed">סלטים עונתיים הנחתכים במקום וחטיפי אנרגיה טבעיים מחומרי גלם איכותיים.</p>
             </article>
           </div>
         </div>
@@ -634,50 +1057,51 @@
         <!-- Category 3 -->
         <div id="menu-cat-3" class="mb-12 scroll-mt-24">
           <h2 class="reveal flex items-center gap-3 font-serif text-2xl sm:text-3xl font-bold text-sage border-b border-sage/20 pb-4 mb-8">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20v-7a7 7 0 0 1 14 0v7"/><path d="M12 6V3"/><circle cx="12" cy="3" r="0.6" fill="currentColor"/></svg>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20v-7a7 7 0 0 1 14 0v7"/><path d="M12 6V3"/></svg>
             מאפים מתוקים וקינוחי קונדיטוריה
           </h2>
 
-          <div class="grid sm:grid-cols-2 gap-x-12 gap-y-8 mb-10">
-            <article class="reveal" style="--delay:40ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">עוגות ומאפי בוקר</h3>
-              <p class="text-warmgray leading-relaxed">עוגות שוקולד עשירות, עוגות גבינה נימוחות ומבחר עוגיות חמאה נמסות בפה.</p>
+          <div class="grid sm:grid-cols-2 gap-5 mb-8">
+            <article class="menu-item-card reveal" style="--delay:40ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">עוגות ומאפי בוקר</h3>
+              <p class="text-warmgray text-sm leading-relaxed">עוגות שוקולד עשירות, עוגות גבינה נימוחות ומבחר עוגיות חמאה נמסות בפה.</p>
             </article>
-            <article class="reveal" style="--delay:100ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">טירמיסו איטלקאי קלאסי</h3>
-              <p class="text-warmgray leading-relaxed">שכבות של מסקרפונה עשירה, בישקוטים ספוגים באספרסו וקקאו איכותי.</p>
+            <article class="menu-item-card reveal" style="--delay:100ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">טירמיסו איטלקאי קלאסי</h3>
+              <p class="text-warmgray text-sm leading-relaxed">שכבות של מסקרפונה עשירה, בישקוטים ספוגים באספרסו וקקאו איכותי.</p>
             </article>
           </div>
 
-          <!-- Signature dessert with image -->
-          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-10">
+          <!-- Signature dessert -->
+          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-8">
             <article class="reveal order-2 lg:order-1" style="--delay:120ms">
-              <span class="inline-block text-xs font-medium tracking-widest text-canvas bg-taupe rounded-full px-3 py-1 mb-3">קינוח חתימה</span>
+              <span class="inline-block text-xs font-semibold tracking-widest text-canvas bg-taupe rounded-full px-3 py-1 mb-4">קינוח חתימה</span>
               <h3 class="font-serif text-2xl font-bold text-espresso mb-3">עוגת באסקה חרוכה</h3>
               <p class="text-lg text-warmgray leading-relaxed">עוגת גבינה באסקית אפויה בטמפרטורה גבוהה למרקם קרמי וקטיפתי מבפנים.</p>
             </article>
             <figure class="reveal order-1 lg:order-2 img-frame rounded-[2rem] shadow-xl shadow-espresso/10">
               <img src="https://i.postimg.cc/N0p4qsG0/Gemini-Generated-Image-(1)-clean.png"
-                   alt="עוגת באסקה חרוכה – קינוח החתימה של מורקפה במרקם קרמי וקטיפתי"
+                   alt="עוגת באסקה חרוכה של מורקפה"
                    class="w-full h-[300px] sm:h-[400px] object-cover" loading="lazy" decoding="async" width="900" height="700" />
             </figure>
           </div>
 
-          <div class="grid sm:grid-cols-2 gap-x-12 gap-y-8">
-            <article class="reveal" style="--delay:40ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">קראק פאי עונתי</h3>
-              <p class="text-warmgray leading-relaxed">פאי שיבולת שועל וחמאה חום, עשיר, מתוק וממכר (מוגש לפי העונה).</p>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <article class="menu-item-card reveal" style="--delay:40ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">קראק פאי עונתי</h3>
+              <p class="text-warmgray text-sm leading-relaxed">פאי שיבולת שועל וחמאה חום, עשיר, מתוק וממכר (מוגש לפי העונה).</p>
             </article>
-            <article class="reveal" style="--delay:100ms">
-              <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">לחמים ביתיים וקינוחים מתחלפים</h3>
-              <p class="text-warmgray leading-relaxed">בכל שבוע מור מפתיעה עם לחמי מחמצת מיוחדים וקינוחי בוטיק משתנים.</p>
+            <article class="menu-item-card reveal" style="--delay:100ms">
+              <h3 class="font-serif text-lg font-bold text-espresso mb-2">לחמים ביתיים וקינוחים מתחלפים</h3>
+              <p class="text-warmgray text-sm leading-relaxed">בכל שבוע מור מפתיעה עם לחמי מחמצת מיוחדים וקינוחי בוטיק משתנים.</p>
             </article>
           </div>
         </div>
 
         <!-- Special banner -->
-        <div class="reveal text-canvas rounded-[2rem] p-8 sm:p-10 mt-6" style="background:linear-gradient(120deg,#5D6B59 0%,#6B7A66 60%,#8A7A6E 130%)">
-          <p class="text-xs font-medium tracking-[0.2em] text-canvas/70 mb-3">מיוחד לסוף השבוע</p>
+        <div class="reveal text-canvas rounded-[2rem] p-8 sm:p-10 mt-6 relative overflow-hidden" style="background:linear-gradient(120deg,#5D6B59 0%,#6B7A66 60%,#8A7A6E 130%)">
+          <span class="absolute -left-10 -bottom-10 w-40 h-40 rounded-full" style="background:rgba(255,255,255,0.06);"></span>
+          <p class="text-xs font-semibold tracking-[0.2em] text-canvas/70 mb-3 uppercase">מיוחד לסוף השבוע</p>
           <p class="text-lg leading-relaxed">
             <span class="font-bold">שימו לב:</span> בימי שישי אנחנו שמים דגש מיוחד על קונדיטוריה חגיגית – עוגות משפחתיות, מאפים מיוחדים ומארזי עוגיות טריות בעבודת יד כדי להמתיק לכם את סוף השבוע ולכבוד שבת!
           </p>
@@ -703,7 +1127,9 @@
       </div>
     </section>
 
-    <!-- ===== TAB 4: VISITOR GUIDE ===== -->
+    <!-- ═══════════════════════════════
+         TAB 4: VISITOR GUIDE
+    ═══════════════════════════════ -->
     <section id="tab-guide" class="tab-view" role="tabpanel" aria-label="המדריך למבקר">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
         <header class="max-w-3xl reveal mb-8">
@@ -735,10 +1161,10 @@
           </div>
         </div>
 
-        <!-- Signature widescreen image -->
+        <!-- Widescreen image -->
         <figure class="reveal img-frame rounded-[2.5rem] shadow-2xl shadow-espresso/10 mb-16">
           <img src="https://i.postimg.cc/mDjKnfJC/Gemini-Generated-Image-clean.png"
-               alt="אורחים יושבים סביב שולחנות פיקניק במרחב המוצל והפתוח של מורקפה"
+               alt="אורחים יושבים סביב שולחנות פיקניק במרחב המוצל של מורקפה"
                class="w-full h-[300px] sm:h-[450px] lg:h-[520px] object-cover" loading="lazy" decoding="async" width="1400" height="800" />
         </figure>
 
@@ -747,36 +1173,37 @@
             <span class="font-serif text-sage text-4xl font-bold">01</span>
             <h2 class="font-serif text-xl sm:text-2xl font-bold text-espresso mt-3 mb-4">תרבות הפיקניק והמדשאות</h2>
             <p class="text-warmgray leading-relaxed">
-              המתחם שלנו מוקף במרבדי דשא ירוקים ורחבי ידיים תחת עצים עתיקים ומצילים. לצד שולחנות הפיקניק הכפריים שהצבנו במקום, המבקרים שלנו יותר ממוזמנים להביא איתם מחצלות פיקניק מהבית, למצוא פינה שקטה ופסטורלית על הדשא, ולפרוס עליה את הכריכים והמאפים הטריים לצד הקפה הבוטיק שלנו.
+              המתחם שלנו מוקף במרבדי דשא ירוקים ורחבי ידיים תחת עצים עתיקים. לצד שולחנות הפיקניק הכפריים, המבקרים מוזמנים להביא מחצלות, למצוא פינה שקטה ולפרוס עליה את המאפים הטריים לצד הקפה הבוטיק שלנו.
             </p>
           </article>
           <article class="reveal" style="--delay:120ms">
             <span class="font-serif text-sage text-4xl font-bold">02</span>
             <h2 class="font-serif text-xl sm:text-2xl font-bold text-espresso mt-3 mb-4">חלל מקורה וממוזג</h2>
             <p class="text-warmgray leading-relaxed">
-              מזג האוויר השתנה? חם מדי בחוץ או גשום? אל דאגה. לצד המרחב הפתוח, עומד לרשותכם מבנה היסטורי משופץ, סגור וממוזג לחלוטין. זהו אי של שקט קולינרי נעים ומזמין שבו תוכלו לשבת וליהנות מהקינוחים של מור בכל עונה ובכל מזג אוויר.
+              מזג האוויר השתנה? לצד המרחב הפתוח עומד לרשותכם מבנה היסטורי משופץ, סגור וממוזג לחלוטין. אי של שקט קולינרי נעים ומזמין שבו תוכלו לשבת וליהנות מהקינוחים של מור בכל עונה ובכל מזג אוויר.
             </p>
           </article>
           <article class="reveal" style="--delay:200ms">
             <span class="font-serif text-sage text-4xl font-bold">03</span>
             <h2 class="font-serif text-xl sm:text-2xl font-bold text-espresso mt-3 mb-4">משלבים קפה וטבע אזורי</h2>
             <p class="text-warmgray leading-relaxed">
-              העגלה ממוקמת בנקודת זינוק מושלמת לטיולים בדרום האיכותי. הביקור אצלנו מתחבר בצורה קלאסית עם ימי טיול וסיור באתרי הטבע המרהיבים שסביבנו: יער שוקדה, יער בארי, גן לאומי הבשור (פארק אש), ומרבדי הכלניות המפורסמים המכסים את האדמה בשטיח אדום מרהיב במהלך עונת 'דרום אדום'. המקום מהווה גם נקודת עצירה מושלמת, איכותית ומרעננת למטיילים הנוסעים דרומה לכיוון אילת.
+              העגלה ממוקמת בנקודת זינוק מושלמת לטיולים בדרום: יער שוקדה, יער בארי, גן לאומי הבשור ומרבדי הכלניות המפורסמים של דרום אדום.
             </p>
             <div class="flex flex-wrap gap-2 mt-5">
               <span class="text-sm bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">יער שוקדה</span>
               <span class="text-sm bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">יער בארי</span>
-              <span class="text-sm bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">גן לאומי הבשור (פארק אש)</span>
+              <span class="text-sm bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">גן לאומי הבשור</span>
               <span class="text-sm bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">דרום אדום · כלניות</span>
             </div>
           </article>
         </div>
 
         <!-- Closing CTA -->
-        <div class="reveal mt-16 lg:mt-20 text-canvas rounded-[2.5rem] p-9 sm:p-12 flex flex-col sm:flex-row sm:items-center justify-between gap-6" style="background:linear-gradient(120deg,#5D6B59 0%,#6B7A66 55%,#8A7A6E 130%)">
+        <div class="reveal mt-16 lg:mt-20 text-canvas rounded-[2.5rem] p-9 sm:p-12 flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative overflow-hidden" style="background:linear-gradient(120deg,#5D6B59 0%,#6B7A66 55%,#8A7A6E 130%)">
+          <span class="absolute -left-12 -bottom-12 w-48 h-48 rounded-full" style="background:rgba(255,255,255,0.05);"></span>
           <div>
             <h2 class="font-serif text-2xl sm:text-3xl font-bold">מתכננים ביקור?</h2>
-            <p class="text-canvas/80 mt-2 text-lg leading-relaxed max-w-xl">נווטו ישירות אל החנייה החופשית הצמודה לעגלה, או בדקו את שעות הפעילות ופרטי ההגעה המלאים.</p>
+            <p class="text-canvas/80 mt-2 text-lg leading-relaxed max-w-xl">נווטו ישירות אל החנייה החופשית, או בדקו את שעות הפעילות ופרטי ההגעה המלאים.</p>
           </div>
           <div class="flex flex-wrap gap-3 shrink-0">
             <a href="https://waze.com/ul?q=מורקפה%20עלומים&navigate=yes" target="_blank" rel="noopener"
@@ -787,7 +1214,9 @@
       </div>
     </section>
 
-    <!-- ===== TAB 5: CONTACT & ARRIVAL ===== -->
+    <!-- ═══════════════════════════════
+         TAB 5: CONTACT
+    ═══════════════════════════════ -->
     <section id="tab-contact" class="tab-view" role="tabpanel" aria-label="צור קשר והגעה">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 lg:pt-24 pb-20">
         <header class="max-w-3xl reveal mb-14">
@@ -796,7 +1225,6 @@
         </header>
 
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
-          <!-- Left column: access -->
           <div class="reveal space-y-8" style="--delay:60ms">
             <div>
               <h2 class="font-serif text-xl font-bold text-espresso mb-3">שעות פעילות מדויקות</h2>
@@ -812,42 +1240,40 @@
             </div>
             <div>
               <h2 class="font-serif text-xl font-bold text-espresso mb-3">ניווט והגעה</h2>
-              <p class="text-warmgray leading-relaxed">פשוט הקלידו „מורקפה” באפליקציית Waze או Google Maps לניווט ישיר לחנייה החופשית והרחבה הצמודה לעגלה.</p>
+              <p class="text-warmgray leading-relaxed">פשוט הקלידו „מורקפה" באפליקציית Waze או Google Maps לניווט ישיר לחנייה החופשית והרחבה הצמודה לעגלה.</p>
             </div>
             <a href="https://waze.com/ul?q=מורקפה%20עלומים&navigate=yes" target="_blank" rel="noopener"
-               class="inline-flex items-center gap-2 bg-sage text-canvas font-medium px-8 py-3.5 rounded-full hover:bg-sage/90 transition-colors duration-300">
+               class="inline-flex items-center gap-2 bg-sage text-canvas font-medium px-8 py-3.5 rounded-full">
               לחצו לניווט ישיר ב-Waze
             </a>
           </div>
 
-          <!-- Right column: digital -->
           <div class="reveal bg-white/70 backdrop-blur-md rounded-[2rem] p-8 sm:p-10 border border-espresso/5 space-y-8" style="--delay:160ms">
             <div>
               <h2 class="font-serif text-xl font-bold text-espresso mb-2">קו ישיר לעגלה (טלפון)</h2>
-              <a href="tel:+972547792646" class="text-warmgray hover:text-sage transition-colors" dir="ltr">054-7792646</a>
+              <a href="tel:+972547792646" class="text-warmgray hover:text-sage transition-colors text-lg" dir="ltr">054-7792646</a>
             </div>
             <div>
               <h2 class="font-serif text-xl font-bold text-espresso mb-2">כתובת דואר אלקטרוני</h2>
               <a href="mailto:cakes.mor@gmail.com" class="text-warmgray hover:text-sage transition-colors" dir="ltr">cakes.mor@gmail.com</a>
             </div>
             <div>
-              <h2 class="font-serif text-xl font-bold text-espresso mb-3">הצטרפו לקהילה הדיגיטלית שלנו לעדכונים חיים מהטאבון והקונדיטוריה</h2>
+              <h2 class="font-serif text-xl font-bold text-espresso mb-3">הצטרפו לקהילה הדיגיטלית שלנו</h2>
               <div class="flex flex-wrap gap-3">
-                <a href="https://www.instagram.com/cakes_and_mor" target="_blank" rel="noopener"
-                   class="inline-flex items-center gap-2 border border-espresso/15 rounded-full px-5 py-2.5 text-espresso hover:border-sage hover:text-sage transition-colors">
-                  אינסטגרם ‎@cakes_and_mor
+                <a href="https://www.instagram.com/cakes_and_mor" target="_blank" rel="noopener" class="social-pill">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+                  ‎@cakes_and_mor
                 </a>
-                <a href="https://www.tiktok.com/@morcafe12" target="_blank" rel="noopener"
-                   class="inline-flex items-center gap-2 border border-espresso/15 rounded-full px-5 py-2.5 text-espresso hover:border-sage hover:text-sage transition-colors">
-                  טיקטוק ‎@morcafe12
+                <a href="https://www.tiktok.com/@morcafe12" target="_blank" rel="noopener" class="social-pill">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.67a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/></svg>
+                  ‎@morcafe12
                 </a>
               </div>
             </div>
             <div class="pt-2 border-t border-espresso/5">
-              <h2 class="font-serif text-base font-bold text-taupe mb-3">מומלצים במדריכי התיירות והקולינריה המובילים</h2>
-              <p class="text-warmgray leading-relaxed mb-3">מורקפה גאה להופיע ולהיות מומלצת במדריכי התיירות והקולינריה המובילים:</p>
+              <h2 class="font-serif text-base font-bold text-taupe mb-3">מומלצים במדריכי התיירות והקולינריה</h2>
               <div class="flex flex-wrap gap-2 text-sm">
-                <span class="bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">Coffee Trail (מסלול הקפה)</span>
+                <span class="bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">Coffee Trail</span>
                 <span class="bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">תיירות הבשור דרום אדום</span>
                 <span class="bg-canvas border border-espresso/10 rounded-full px-4 py-1.5 text-warmgray">Where to Eat</span>
               </div>
@@ -855,57 +1281,124 @@
           </div>
         </div>
 
-        <!-- Golden tip callout -->
+        <!-- Golden tip -->
         <div class="reveal mt-12 bg-taupe/10 border border-taupe/20 rounded-[2rem] p-8 sm:p-10" style="--delay:240ms">
-          <h2 class="font-serif text-xl font-bold text-espresso mb-2">טיפ זהב מהבאריסטה</h2>
-          <p class="text-lg leading-relaxed text-warmgray">
-            המקום פופולרי מאוד בסופי השבוע ומאפי הבוקר המיוחדים של מור נחטפים במהירות. מומלץ להגיע בשעות הבוקר המוקדמות כדי להבטיח לעצמכם את הבחירה המלאה מהוויטרינה!
-          </p>
+          <div class="flex gap-4 items-start">
+            <span class="shrink-0 text-2xl" aria-hidden="true">✦</span>
+            <div>
+              <h2 class="font-serif text-xl font-bold text-espresso mb-2">טיפ זהב מהבאריסטה</h2>
+              <p class="text-lg leading-relaxed text-warmgray">
+                המקום פופולרי מאוד בסופי השבוע ומאפי הבוקר המיוחדים של מור נחטפים במהירות. מומלץ להגיע בשעות הבוקר המוקדמות כדי להבטיח לעצמכם את הבחירה המלאה מהוויטרינה!
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="relative z-10 border-t border-espresso/5 bg-canvas">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
-      <div class="text-center sm:text-right">
-        <span class="brand inline-flex items-center gap-2.5 justify-center sm:justify-start">
-          <span class="brand-mark relative inline-flex items-center justify-center w-10 h-10 rounded-full text-canvas shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path class="steam" d="M9 3.5c.7.8.7 1.7 0 2.5M12 3c.7.8.7 1.7 0 2.5M15 3.5c.7.8.7 1.7 0 2.5"/>
-              <path d="M4 9h13v4.5A4.5 4.5 0 0 1 12.5 18h-4A4.5 4.5 0 0 1 4 13.5V9z"/>
-              <path d="M17 10h1.6a2.4 2.4 0 0 1 0 4.8H17"/>
-            </svg>
-          </span>
-          <span class="font-serif text-2xl font-bold text-espresso">מורקפה</span>
-        </span>
-        <p class="text-sm text-warmgray mt-2">חצר הראשונים, קיבוץ עלומים · עוטף עזה</p>
-        <p class="text-sm text-warmgray mt-3">© 2026 מורקפה</p>
+  <!-- ══════════════════════════════════
+       STEP 8: Rich footer — 3 columns
+  ══════════════════════════════════ -->
+  <footer class="relative z-10 bg-espresso text-canvas/80">
+    <!-- Top wave -->
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="60">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,0 L0,0 Z" fill="#FBF9F6"/>
+      </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-10 pb-8">
+      <div class="grid md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
+
+        <!-- Col 1: brand -->
+        <div>
+          <a href="#" data-tab="home" class="brand inline-flex items-center gap-2.5 mb-4" aria-label="מורקפה">
+            <span class="brand-mark relative inline-flex items-center justify-center w-10 h-10 rounded-full text-canvas shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path class="steam" d="M9 3.5c.7.8.7 1.7 0 2.5M12 3c.7.8.7 1.7 0 2.5M15 3.5c.7.8.7 1.7 0 2.5"/>
+                <path d="M4 9h13v4.5A4.5 4.5 0 0 1 12.5 18h-4A4.5 4.5 0 0 1 4 13.5V9z"/>
+                <path d="M17 10h1.6a2.4 2.4 0 0 1 0 4.8H17"/>
+              </svg>
+            </span>
+            <span class="font-serif text-2xl font-bold text-canvas tracking-tight">מורקפה</span>
+          </a>
+          <p class="text-canvas/60 text-sm leading-relaxed max-w-xs">
+            עגלת קפה בוטיק ומאפים ביתיים בחצר הראשונים, קיבוץ עלומים.<br/>נאפה עם ♡ בלב עוטף עזה.
+          </p>
+          <div class="flex gap-3 mt-5">
+            <a href="https://www.instagram.com/cakes_and_mor" target="_blank" rel="noopener" aria-label="אינסטגרם"
+               class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:border-white/40 hover:text-canvas transition-colors duration-300">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@morcafe12" target="_blank" rel="noopener" aria-label="טיקטוק"
+               class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:border-white/40 hover:text-canvas transition-colors duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.67a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: quick nav -->
+        <div>
+          <p class="footer-col-title text-canvas">ניווט מהיר</p>
+          <nav aria-label="ניווט מהיר בפוטר">
+            <button type="button" class="tab-trigger footer-link" data-tab="home">בית</button>
+            <button type="button" class="tab-trigger footer-link" data-tab="story">הסיפור שלנו</button>
+            <button type="button" class="tab-trigger footer-link" data-tab="menu">התפריט</button>
+            <button type="button" class="tab-trigger footer-link" data-tab="guide">המדריך למבקר</button>
+            <button type="button" class="tab-trigger footer-link" data-tab="contact">צור קשר והגעה</button>
+          </nav>
+        </div>
+
+        <!-- Col 3: hours + contact -->
+        <div>
+          <p class="footer-col-title text-canvas">שעות ויצירת קשר</p>
+          <ul class="space-y-1.5 text-sm text-canvas/60 mb-5">
+            <li>חמישי: 08:30 – 13:30</li>
+            <li>שישי: 08:30 – 13:00</li>
+            <li>שבת – רביעי: סגור</li>
+          </ul>
+          <a href="tel:+972547792646" class="footer-link text-canvas/60 hover:text-canvas/90" dir="ltr">054-7792646</a>
+          <a href="mailto:cakes.mor@gmail.com" class="footer-link text-canvas/60 hover:text-canvas/90" dir="ltr">cakes.mor@gmail.com</a>
+          <p class="text-sm text-canvas/50 mt-3">חצר הראשונים, קיבוץ עלומים</p>
+        </div>
       </div>
-      <div class="inline-flex items-center gap-2 bg-sage/10 border border-sage/20 rounded-full px-5 py-2.5">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>
-        </svg>
-        <span class="text-sage font-medium">כשר עם תעודה</span>
+
+      <!-- Bottom bar -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-canvas/40 text-sm">© 2026 מורקפה · כל הזכויות שמורות</p>
+        <div class="inline-flex items-center gap-2 bg-sage/20 border border-sage/30 rounded-full px-4 py-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5D6B59" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          <span class="text-sage text-sm font-medium">כשר עם תעודה</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- ============ TOAST ============ -->
+  <!-- Toast -->
   <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-espresso text-canvas px-6 py-3.5 rounded-full shadow-2xl opacity-0 translate-y-4 pointer-events-none text-sm font-medium"></div>
 
   <script>
     (function () {
       'use strict';
 
+      /* ── Scroll progress bar ── */
+      var progressBar = document.getElementById('progress-bar');
+      function updateProgress() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docH > 0 ? scrollTop / docH : 0;
+        progressBar.style.transform = 'scaleX(' + pct + ')';
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+
       var tabs = ['home', 'story', 'menu', 'guide', 'contact'];
       var triggers = document.querySelectorAll('.tab-trigger, [data-tab]');
       var mobileMenu = document.getElementById('mobileMenu');
       var menuToggle = document.getElementById('menuToggle');
-      var menuClose = document.getElementById('menuClose');
-      var toast = document.getElementById('toast');
+      var menuClose  = document.getElementById('menuClose');
+      var toast      = document.getElementById('toast');
       var toastTimer;
 
       function showToast(msg) {
@@ -927,11 +1420,8 @@
         mobileMenu.classList.remove('hidden-menu');
         menuToggle.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
-        // stagger mobile links
         var links = mobileMenu.querySelectorAll('.m-link');
-        links.forEach(function (l, i) {
-          l.style.animationDelay = (i * 60) + 'ms';
-        });
+        links.forEach(function (l, i) { l.style.animationDelay = (i * 60) + 'ms'; });
       }
 
       function activateTab(name) {
@@ -942,7 +1432,6 @@
         });
         var view = document.getElementById('tab-' + name);
         if (view) {
-          // force reflow so re-entering a tab replays the animation
           view.classList.add('is-active');
           var reveals = view.querySelectorAll('.reveal');
           reveals.forEach(function (r) {
@@ -952,7 +1441,6 @@
           });
         }
 
-        // update nav state
         document.querySelectorAll('.nav-link').forEach(function (n) {
           if (n.getAttribute('data-tab') === name) {
             n.setAttribute('aria-current', 'page');
@@ -965,6 +1453,7 @@
           history.replaceState(null, '', '#' + name);
         }
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        updateProgress();
       }
 
       triggers.forEach(function (t) {
@@ -973,41 +1462,29 @@
           if (!name) return;
           e.preventDefault();
           activateTab(name);
-          if (!mobileMenu.classList.contains('hidden-menu')) {
-            closeMobileMenu();
-          }
-          if (name === 'menu') {
-            // gentle nudge that we landed on the menu
-          }
+          if (!mobileMenu.classList.contains('hidden-menu')) closeMobileMenu();
         });
       });
 
       menuToggle.addEventListener('click', openMobileMenu);
       menuClose.addEventListener('click', closeMobileMenu);
-
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden-menu')) {
-          closeMobileMenu();
-        }
+        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden-menu')) closeMobileMenu();
       });
 
-      // Waze links → friendly toast (non-blocking, link still works)
       document.querySelectorAll('a[href*="waze.com"]').forEach(function (a) {
         a.addEventListener('click', function () {
           showToast('פותחים ניווט ב-Waze אל מורקפה…');
         });
       });
 
-      // Scroll-triggered reveals (chapters enter one by one)
+      /* ── Scroll-triggered reveals ── */
       var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var revealEls = document.querySelectorAll('.scroll-reveal');
 
       if (prefersReduced || !('IntersectionObserver' in window)) {
         revealEls.forEach(function (el) { el.classList.add('in-view'); });
       } else {
-        // Trigger line sits ~35% up from the bottom of the viewport, so each
-        // block reveals only once it has scrolled well into view — giving a
-        // true one-by-one cascade instead of grouped entrances on mobile.
         var io = new IntersectionObserver(function (entries, obs) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -1015,7 +1492,7 @@
               obs.unobserve(entry.target);
             }
           });
-        }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
+        }, { threshold: 0, rootMargin: '0px 0px -30% 0px' });
 
         revealEls.forEach(function (el) {
           el.style.transitionDelay = '0ms';
@@ -1023,7 +1500,6 @@
         });
       }
 
-      // Init from hash
       var initial = (location.hash || '').replace('#', '');
       activateTab(tabs.indexOf(initial) !== -1 ? initial : 'home');
     })();
